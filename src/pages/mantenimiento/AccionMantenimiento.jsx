@@ -11,7 +11,7 @@ function AccionMantenimiento() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5103/api/AccionMantenimiento'); // Update with your .NET API endpoint
+        const response = await axios.get('/AccionMantenimiento'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.amId,
@@ -59,6 +59,13 @@ function AccionMantenimiento() {
 
   return (
     <div className="accionMantenimiento">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Acciones de Mantenimiento</h1>
+        <Link to="/accion-mantenimiento-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
+
       <DataGrid
         rows={data}
         disableSelectionOnClick
