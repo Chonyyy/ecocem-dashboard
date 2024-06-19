@@ -11,6 +11,7 @@ import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 
 import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
+import AccionMantenimientoCreate from './pages/mantenimiento/AccionMantenimientoCreate';
 import Equipo from './pages/mantenimiento/Equipo';
 import Herramientas from './pages/mantenimiento/Herramientas';
 import OrdenTrabajo from './pages/mantenimiento/OrdenTrabajo';
@@ -26,6 +27,7 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path='/accion-mantenimiento' element={<AccionMantenimiento />} />
+          <Route path='/accion-mantenimiento-create' element={<AccionMantenimientoCreate />} />
           <Route path='/equipo' element={<Equipo />} />
           <Route path='/herramientas' element={<Herramientas />} />
           <Route path='/orden-trabajo' element={<OrdenTrabajo />} />
