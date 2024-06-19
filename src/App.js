@@ -9,6 +9,7 @@ import NewUser from "./pages/NewUser";
 import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
+import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <div className="container">
         <Sidebar />
         <Routes>
+          <Route path='/accion-mantenimiento' element={<AccionMantenimiento />} />
+
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/user/:userId" element={<User />} />
