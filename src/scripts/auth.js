@@ -1,8 +1,6 @@
 // Function to check if the user is authenticated by checking the presence of a cookie
 export const isAuthenticated = () => {
-  console.log("Hi!")
-  console.log(document)
-  console.log("Bye!")
+  return true//TODO: If needed implement proper route authentication
   return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
 };
 
