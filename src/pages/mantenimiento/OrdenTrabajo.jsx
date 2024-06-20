@@ -74,6 +74,13 @@ function OrdenTrabajo() {
 
   return (
     <div className="ordenTrabajo">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Orden de Trabajo</h1>
+        <Link to="/orden-trabajo-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
+
       <DataGrid
         rows={data}
         disableSelectionOnClick

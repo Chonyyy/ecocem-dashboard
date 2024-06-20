@@ -66,6 +66,13 @@ function RoturaEquipo() {
 
   return (
     <div className="roturaEquipo">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Rotura de Equipo</h1>
+        <Link to="/rotura-equipo-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
+
       <DataGrid
         rows={data}
         disableSelectionOnClick

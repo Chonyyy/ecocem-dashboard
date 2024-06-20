@@ -65,6 +65,13 @@ function Equipo() {
 
   return (
     <div className="equipo">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Equipos</h1>
+        <Link to="/equipo-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
+
       <DataGrid
         rows={data}
         disableSelectionOnClick

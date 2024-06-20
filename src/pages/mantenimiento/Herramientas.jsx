@@ -65,6 +65,12 @@ function Herramientas() {
 
   return (
     <div className="herramientas">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Herramientas</h1>
+        <Link to="/herramientas-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
       <DataGrid
         rows={data}
         disableSelectionOnClick

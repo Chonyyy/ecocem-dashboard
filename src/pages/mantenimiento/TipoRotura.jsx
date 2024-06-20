@@ -65,6 +65,13 @@ function TipoRotura() {
 
   return (
     <div className="tipoRotura">
+      <div className="tableTitleContainer">
+        <h1 className="tableTitle">Tipo de Rotura</h1>
+        <Link to="/tipo-rotura-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
+      </div>
+    
       <DataGrid
         rows={data}
         disableSelectionOnClick
