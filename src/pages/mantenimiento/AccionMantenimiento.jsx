@@ -3,8 +3,8 @@ import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { checkAuth, checkAdmin } from '../../scripts/auth';
 import axios from 'axios';
+import { checkAuth, checkAdmin } from '../../scripts/auth';
 import { useNavigate } from 'react-router-dom';
 
 function AccionMantenimiento() {
@@ -80,9 +80,10 @@ function AccionMantenimiento() {
     <div className="accionMantenimiento">
       <div className="tableTitleContainer">
         <h1 className="tableTitle">Acciones de Mantenimiento</h1>
+        {administrator && (
         <Link to="/accion-mantenimiento-create">
           <button className="tableAddButton">Create</button>
-        </Link>
+        </Link>)}
       </div>
 
       <DataGrid

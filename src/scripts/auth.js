@@ -5,8 +5,14 @@ export const isAuthenticated = () => {
   return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
 };
 
-export const logout = () => {
-  document.cookie = 'token=; Max-Age=0; path=/';
+export const logout = async () => {
+  try {
+    await axiosInstance.post('/logout');
+    // Clear local storage or state if you store user info there
+    localStorage.removeItem('user');
+  } catch (error) {
+    console.error('Error during logout:', error);
+  }
 };
 
 export const checkAuth = async () => {

@@ -11,10 +11,12 @@ import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 
 //Authentication
+
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login';
 
 //Mantenimiento
+
 import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
 import AccionMantenimientoCreate from './pages/mantenimiento/AccionMantenimientoCreate';
 import Equipo from './pages/mantenimiento/Equipo';
@@ -30,6 +32,7 @@ import TipoRotura from './pages/mantenimiento/TipoRotura';
 import TipoRoturaCreate from './pages/mantenimiento/TipoRoturaCreate';
 
 //Peso
+
 import Bascula from './pages/peso/Bascula';
 import BasculaCreate from './pages/peso/BasculaCreate';
 import Carga from './pages/peso/Carga';
@@ -51,8 +54,6 @@ import VehiculoCreate from './pages/peso/VehiculoCreate';
 import Venta from './pages/peso/Venta';
 import VentaCreate from './pages/peso/VentaCreate';
 
-
-
 //Administracion
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
               <div className="container">
                 <Sidebar />
                 <Routes>
+                  {/* Mantenimiento */}
                   <Route path='/accion-mantenimiento' element={<ProtectedRoute element={AccionMantenimiento} />} />
                   <Route path='/accion-mantenimiento-create' element={<ProtectedRoute element={AccionMantenimientoCreate} />} />
                   <Route path='/equipo' element={<ProtectedRoute element={Equipo} />} />
@@ -83,6 +85,7 @@ function App() {
                   <Route path='/tipo-rotura-create' element={<ProtectedRoute element={TipoRoturaCreate} />} />
                   <Route path="/" element={<ProtectedRoute element={Home} />} />
                   
+                  {/* Pesos */}
                   <Route path='/bascula' element={<ProtectedRoute element={Bascula} />} />
                   <Route path='/bascula-create' element={<ProtectedRoute element={BasculaCreate} />} />
                   <Route path='/carga' element={<ProtectedRoute element={Carga} />} />
@@ -104,7 +107,9 @@ function App() {
                   <Route path='/venta' element={<ProtectedRoute element={Venta} />} />
                   <Route path='/venta-create' element={<ProtectedRoute element={VentaCreate} />} />
                   
+                  {/* Administracion */}
 
+                  {/* Otros */}
                   <Route path="/users" element={<UserList />} />
                   <Route path="/user/:userId" element={<User />} />
                   <Route path="/newUser" element={<NewUser />} />

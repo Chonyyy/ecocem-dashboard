@@ -45,7 +45,7 @@
     border-radius: 5px;
   }
 
-  .newAccionMantenimientoItem > textarea {
+  .newTrabajadorItem > textarea {
     height: 100px; /* Adjust the height as needed */
     padding: 10px;
     border: 1px solid gray;
