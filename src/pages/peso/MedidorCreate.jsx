@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function MedidorCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+    const [numeroMedidor, setNumeroMedidor] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        MedidorId: 0,
+        NoSerie: numeroMedidor
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Medidor', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -30,18 +28,11 @@ function MedidorCreate() {
       <h1 className="newMedidorTitle">Crear Medidor</h1>
       <form className="newMedidorForm" onSubmit={handleSubmit}>
         <div className="newMedidorItem">
-        <label>Nombre</label>
+          <label>Numero de serie</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            className="newMedidorTextarea"
-          />
-          <label>Descripción</label>
-          <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            value={numeroMedidor}
+            placeholder="Ingrese el Nombre de la Medidor"
+            onChange={(e) => setNumeroMedidor(e.target.value)}
             className="newMedidorTextarea"
           />
         </div>

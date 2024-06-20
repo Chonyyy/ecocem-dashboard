@@ -4,6 +4,7 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { type } from '@testing-library/user-event/dist/type';
 
 function Venta() {
   const [data, setData] = useState([]);
@@ -39,9 +40,10 @@ function Venta() {
       width: 200
     },
     {
-        field: "fechaId",
-        headerName: "Fecha",
-        width: 200
+      field: "fechaId",
+      headerName: "Fecha",
+      type: "Date",
+      width: 200
       },
     {
       field: "action",

@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function VehiculoCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
-
+    const [numeroVehiculo, setNumeroVehiculo] = useState("");
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        VehiculoId: 0,
+        NoSerie: numeroVehiculo
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Vehiculo', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -32,16 +30,9 @@ function VehiculoCreate() {
         <div className="newVehiculoItem">
         <label>Nombre</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            className="newVehiculoTextarea"
-          />
-          <label>Descripción</label>
-          <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+             value={numeroVehiculo}
+             placeholder="Ingrese el Nombre del Vehículo"
+             onChange={(e) => setNumeroVehiculo(e.target.value)}   
             className="newVehiculoTextarea"
           />
         </div>

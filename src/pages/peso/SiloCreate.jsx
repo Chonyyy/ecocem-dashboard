@@ -1,21 +1,37 @@
 import '../../css/page/peso/siloCreate.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function SiloCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+    const [numeroSilo, setNumeroSilo] = useState("");
+  const [radio, setRadio] = useState(1);
+  const [noSede, setSedeId] = useState(1);
+  const [altura, setAltura] = useState(1);
+
+  //Lista de sedes
+  const [sedes, setSedes] = useState([]);
+  
+  useEffect(() => {
+  axios.get(`/Sede`)
+    .then(res => {
+      setSedes(res.data);
+    })
+    .catch(err => console.log(err));
+  }, []);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        siloId: 0,
+        noSilo: numeroSilo,
+        noSede:noSede,
+        radio:radio,
+        altura:altura,
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Silo', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -32,18 +48,42 @@ function SiloCreate() {
         <div className="newSiloItem">
         <label>Nombre</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={numeroSilo}
+            placeholder="Ingrese el Nombre de la Silo"
+            onChange={(e) => setNumeroSilo(e.target.value)}
             className="newSiloTextarea"
           />
-          <label>Descripción</label>
+
+          <label>Altura</label>
           <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            value={altura}
+            placeholder="Ingrese la Altura"
+            onChange={(e) => setAltura(e.target.value)}
             className="newSiloTextarea"
           />
+
+        <label>Radio</label>
+          <textarea
+            value={radio}
+            placeholder="Ingrese el radio"
+            onChange={(e) => setRadio(e.target.value)}
+            className="newSiloTextarea"
+          />
+
+        <label>Seleccione la sede</label>
+        <select
+          value={noSede}
+          onChange={(e) => setSedeId(e.target.value)}
+        >
+          {sedes.map((sede) => (
+            <option key={sede.sedeId} value={sede.sedeId}>
+              {sede.nombreSede}
+              
+            </option>
+          ))}
+        </select>
+
+
         </div>
         <button type="submit" className="newSiloButton">Create</button>
       </form>

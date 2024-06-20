@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function FabricaCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+  const [numeroFabrica, setNumeroFabrica] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        FabricaId: 0,
+        Nombre: numeroFabrica
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Fabrica', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -32,16 +30,9 @@ function FabricaCreate() {
         <div className="newFabricaItem">
         <label>Nombre</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            className="newFabricaTextarea"
-          />
-          <label>Descripción</label>
-          <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            value={numeroFabrica}
+            placeholder="Ingrese el Nombre de la Fabrica"
+            onChange={(e) => setNumeroFabrica(e.target.value)}
             className="newFabricaTextarea"
           />
         </div>

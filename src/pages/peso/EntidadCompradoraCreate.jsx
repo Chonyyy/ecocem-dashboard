@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function EntidadCompradoraCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+    const [numeroEntidadCompradora, setNumeroEntidadCompradora] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        EntidadCompradoraId: 0,
+        NombreEntidadCompradora: numeroEntidadCompradora
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/EntidadCompradora', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -32,16 +30,9 @@ function EntidadCompradoraCreate() {
         <div className="newEntidadCompradoraItem">
         <label>Nombre</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            className="newEntidadCompradoraTextarea"
-          />
-          <label>Descripción</label>
-          <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
+            value={numeroEntidadCompradora}
+            placeholder="Ingrese el Nombre de la Entidad Compradora"
+            onChange={(e) => setNumeroEntidadCompradora(e.target.value)}
             className="newEntidadCompradoraTextarea"
           />
         </div>

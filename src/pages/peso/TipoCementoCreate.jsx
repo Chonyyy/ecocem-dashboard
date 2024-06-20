@@ -4,18 +4,16 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function TipoCementoCreate() {
-  const [nombre, setNombre] = useState('');
-  const [descripcion, setDescripcion] = useState('');
+    const [numeroTipoCemento, setNumeroTipoCemento] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        herramientaId: 0,
-        nombre: nombre,
-        descripcion: descripcion
+        TipoCementoId: 0,
+        NombreTipoCemento: numeroTipoCemento
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/TipoCemento', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }
@@ -32,18 +30,12 @@ function TipoCementoCreate() {
         <div className="newTipoCementoItem">
         <label>Nombre</label>
           <input
-            placeholder="Nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
+            value={numeroTipoCemento}
+            placeholder="Ingrese el Nombre del Tipo Cemento"
+            onChange={(e) => setNumeroTipoCemento(e.target.value)}  
             className="newTipoCementoTextarea"
           />
-          <label>Descripción</label>
-          <textarea
-            placeholder="Descripción"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-            className="newTipoCementoTextarea"
-          />
+
         </div>
         <button type="submit" className="newTipoCementoButton">Create</button>
       </form>

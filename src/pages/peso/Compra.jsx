@@ -32,15 +32,16 @@ function Compra() {
   };
 
   const columns = [
-    { field: "sedeId", headerName: "ID de la sede", width: 90 },
-    {
-      field: "tipoEId",
-      headerName: "Tipo de equipo",
-      width: 200
-    },
+    { field: "id", headerName: "ID de la sede", width: 90 },
     {
         field: "fabricaId",
         headerName: "Fabrica",
+        width: 200
+      },
+      {
+        field: "fechaId",
+        headerName: "Fecha",
+        type: "Date",
         width: 200
       },
     {
