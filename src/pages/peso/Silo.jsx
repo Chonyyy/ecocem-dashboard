@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/silo.css';
+import '../../css/page/peso/silo.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -11,12 +11,14 @@ function Silo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/Silo'); // Update with your .NET API endpoint
+        const response = await axios.get('/Silo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.siloId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          noSilo: item.noSilo,
+          noSede: item.noSede,
+          radio: item.radio,
+          altura: item.altura
         }));
         setData(transformedData);
       } catch (error) {
@@ -34,15 +36,26 @@ function Silo() {
   const columns = [
     { field: "siloId", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de silo",
+      field: "noSilo",
+      headerName: "noSilo",
       width: 200
     },
     {
-        field: "sedeId",
-        headerName: "Sede del silo",
+      field: "noSede",
+      headerName: "noSede",
+      width: 200
+    },
+    
+      {
+        field: "radio",
+        headerName: "Radio",
         width: 200
       },
+      {
+          field: "altura",
+          headerName: "Altura",
+          width: 200
+        },
     {
       field: "action",
       headerName: "Action",

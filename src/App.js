@@ -30,6 +30,28 @@ import TipoRotura from './pages/mantenimiento/TipoRotura';
 import TipoRoturaCreate from './pages/mantenimiento/TipoRoturaCreate';
 
 //Peso
+import Bascula from './pages/peso/Bascula';
+import BasculaCreate from './pages/peso/BasculaCreate';
+import Carga from './pages/peso/Carga';
+import CargaCreate from './pages/peso/CargaCreate';
+import Compra from './pages/peso/Compra';
+import CompraCreate from './pages/peso/CompraCreate';
+import EntidadCompradora from './pages/peso/EntidadCompradora';
+import EntidadCompradoraCreate from './pages/peso/EntidadCompradoraCreate';
+import Fabrica from './pages/peso/Fabrica';
+import FabricaCreate from './pages/peso/FabricaCreate';
+import Medidor from './pages/peso/Medidor';
+import MedidorCreate from './pages/peso/MedidorCreate';
+import Silo from './pages/peso/Silo';
+import SiloCreate from './pages/peso/SiloCreate';
+import TipoCemento from './pages/peso/TipoCemento';
+import TipoCementoCreate from './pages/peso/TipoCementoCreate';
+import Vehiculo from './pages/peso/Vehiculo';
+import VehiculoCreate from './pages/peso/VehiculoCreate';
+import Venta from './pages/peso/Venta';
+import VentaCreate from './pages/peso/VentaCreate';
+
+
 
 //Administracion
 
@@ -61,6 +83,28 @@ function App() {
                   <Route path='/tipo-rotura-create' element={<ProtectedRoute element={TipoRoturaCreate} />} />
                   <Route path="/" element={<ProtectedRoute element={Home} />} />
                   
+                  <Route path='/bascula' element={<ProtectedRoute element={Bascula} />} />
+                  <Route path='/bascula-create' element={<ProtectedRoute element={BasculaCreate} />} />
+                  <Route path='/carga' element={<ProtectedRoute element={Carga} />} />
+                  <Route path='/carga-create' element={<ProtectedRoute element={CargaCreate} />} />
+                  <Route path='/compra' element={<ProtectedRoute element={Compra} />} />
+                  <Route path='/compra-create' element={<ProtectedRoute element={CompraCreate} />} />
+                  <Route path='/entidad-compradora' element={<ProtectedRoute element={EntidadCompradora} />} />
+                  <Route path='/entidad-compradora-create' element={<ProtectedRoute element={EntidadCompradoraCreate} />} />
+                  <Route path='/fabrica' element={<ProtectedRoute element={Fabrica} />} />
+                  <Route path='/fabrica-create' element={<ProtectedRoute element={FabricaCreate} />} />
+                  <Route path='/medidor' element={<ProtectedRoute element={Medidor} />} />
+                  <Route path='/medidor-create' element={<ProtectedRoute element={MedidorCreate} />} />
+                  <Route path='/silo' element={<ProtectedRoute element={Silo} />} />
+                  <Route path='/silo-create' element={<ProtectedRoute element={SiloCreate} />} />
+                  <Route path='/tipo-cemento' element={<ProtectedRoute element={TipoCemento} />} />
+                  <Route path='/tipo-cemento-create' element={<ProtectedRoute element={TipoCementoCreate} />} />
+                  <Route path='/vehiculo' element={<ProtectedRoute element={Vehiculo} />} />
+                  <Route path='/vehiculo-create' element={<ProtectedRoute element={VehiculoCreate} />} />
+                  <Route path='/venta' element={<ProtectedRoute element={Venta} />} />
+                  <Route path='/venta-create' element={<ProtectedRoute element={VentaCreate} />} />
+                  
+
                   <Route path="/users" element={<UserList />} />
                   <Route path="/user/:userId" element={<User />} />
                   <Route path="/newUser" element={<NewUser />} />

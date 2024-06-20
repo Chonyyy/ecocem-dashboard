@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/tipoCemento.css';
+import '../../css/page/peso/tipoCemento.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -15,8 +15,7 @@ function TipoCemento() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.tipoCementoId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          nombreTipoCemento: item.nombreTipoCemento
         }));
         setData(transformedData);
       } catch (error) {
@@ -34,15 +33,10 @@ function TipoCemento() {
   const columns = [
     { field: "tipoCementoId", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de tipoCemento",
+      field: "nombreTipoCemento",
+      headerName: "Nombre",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del tipoCemento",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

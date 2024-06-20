@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/bascula.css';
+import '../../css/page/peso/bascula.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -15,8 +15,9 @@ function Bascula() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.basculaId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          noSerie: item.noSerie,
+          noSede: item.noSede,
+          descripcion: item.descripcion
         }));
         setData(transformedData);
       } catch (error) {
@@ -32,15 +33,20 @@ function Bascula() {
   };
 
   const columns = [
-    { field: "basculaId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de bascula",
+      field: "noSerie",
+      headerName: "Numero de serie",
       width: 200
     },
     {
-        field: "sedeId",
+        field: "noSede",
         headerName: "Sede del bascula",
+        width: 200
+      },
+      {
+        field: "descripcion",
+        headerName: "Descripcion",
         width: 200
       },
     {

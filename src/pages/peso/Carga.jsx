@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/carga.css';
+import '../../css/page/peso/carga.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -14,9 +14,18 @@ function Carga() {
         const response = await axios.get('/Carga'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-          id: item.cargaId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          id: item.tipoCementoId,
+          siloId: item.siloId,
+          vehiculoId: item.vehiculoId,
+          fechaId: item.fechaId,
+          pesoBruto: item.pesoBruto,
+          tara: item.tara,
+          medidorId: item.medidorId,
+          nivel: item.nivel,
+          pesoM: item.pesoM,
+          volumen: item.volumen,
+          basculaId: item.basculaId,
+          pesoB: item.pesoB
         }));
         setData(transformedData);
       } catch (error) {
@@ -32,17 +41,62 @@ function Carga() {
   };
 
   const columns = [
-    { field: "cargaId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "tipoCementoId", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de carga",
+      field: "siloId",
+      headerName: "ID del silo",
       width: 200
     },
     {
-        field: "sedeId",
-        headerName: "Sede del carga",
+        field: "vehiculoId",
+        headerName: "ID del vehiculo",
         width: 200
       },
+      {
+        field: "fechaId",
+        headerName: "Fecha",
+        width: 200
+      },
+      {
+          field: "pesoBruto",
+          headerName: "Peso Bruto",
+          width: 200
+        },
+        {
+          field: "tara",
+          headerName: "Tara",
+          width: 200
+        },
+        {
+            field: "medidorId",
+            headerName: "ID del medidor",
+            width: 200
+          },
+          {
+            field: "nivel",
+            headerName: "Nivel",
+            width: 200
+          },
+          {
+              field: "pesoM",
+              headerName: "PesoM",
+              width: 200
+            },
+            {
+              field: "volumen",
+              headerName: "Volumen",
+              width: 200
+            },
+            {
+                field: "basculaId",
+                headerName: "ID de la bascula",
+                width: 200
+              },
+              {
+                field: "pesoB",
+                headerName: "pesoB",
+                width: 200
+              },
     {
       field: "action",
       headerName: "Action",

@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/vehiculo.css';
+import '../../css/page/peso/vehiculo.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -15,8 +15,7 @@ function Vehiculo() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.vehiculoId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          noSerie: item.noSerie
         }));
         setData(transformedData);
       } catch (error) {
@@ -34,15 +33,10 @@ function Vehiculo() {
   const columns = [
     { field: "vehiculoId", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de vehiculo",
+      field: "noSerie",
+      headerName: "noSerie",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del vehiculo",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

@@ -1,14 +1,14 @@
-.newSilo {
+.newFabrica {
     flex: 4;
     margin-top: 50px;
   }
   
-  .newSiloForm {
+  .newFabricaForm {
     display: flex;
     flex-wrap: wrap;
   }
   
-  .newSiloItem {
+  .newFabricaItem {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,14 +16,14 @@
     margin-right: 20px;
   }
   
-  .newSiloItem > label {
+  .newFabricaItem > label {
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 600;
     color: rgb(151, 150, 150);
   }
   
-  .newSiloItem > input {
+  .newFabricaItem > input {
     width: 40%;
     padding: 10px;
     border: 1px solid gray;
@@ -31,14 +31,14 @@
     resize: vertical; /* Allows vertical resizing */
   }
   
-  .newSiloItem > select {
+  .newFabricaItem > select {
     width: 40%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
   }
 
-  .newSiloItem > textarea {
+  .newFabricaItem > textarea {
     height: 100px; /* Adjust the height as needed */
     padding: 10px;
     border: 1px solid gray;
@@ -46,7 +46,7 @@
     resize: vertical; /* Allows vertical resizing */
   }
   
-  .newSiloButton {
+  .newFabricaButton {
     width: 200px;
     border: none;
     background-color: teal;

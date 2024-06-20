@@ -1,14 +1,14 @@
-.newEquipo {
+.newBascula {
     flex: 4;
     margin-top: 50px;
   }
   
-  .newEquipoForm {
+  .newBasculaForm {
     display: flex;
     flex-wrap: wrap;
   }
   
-  .newEquipoItem {
+  .newBasculaItem {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -16,29 +16,44 @@
     margin-right: 20px;
   }
   
-  .newEquipoItem > label {
+  .newBasculaItem > label {
     margin-bottom: 10px;
     font-size: 14px;
     font-weight: 600;
     color: rgb(151, 150, 150);
   }
   
-  .newEquipoItem > input {
+  .newBasculaItem > input {
     width: 40%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
     resize: vertical; /* Allows vertical resizing */
   }
+  .BasculaItem > textarea {
+    height: 100px; /* Adjust the height as needed */
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    resize: vertical; /* Allows vertical resizing */
+  }
   
-  .newEquipoItem > select {
+  .newBasculaItem > select {
     width: 40%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
   }
+
+  .newAccionMantenimientoItem > textarea {
+    height: 100px; /* Adjust the height as needed */
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    resize: vertical; /* Allows vertical resizing */
+  }
   
-  .newEquipoButton {
+  .newBasculaButton {
     width: 200px;
     border: none;
     background-color: teal;

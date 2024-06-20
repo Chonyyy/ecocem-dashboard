@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/compra.css';
+import '../../css/page/peso/compra.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ function Compra() {
         const response = await axios.get('/Compra'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-          id: item.compraId,
+          id: item.sedeId,
           fabricaId: item.fabricaId,
           fechaId: item.fechaId
         }));
@@ -32,10 +32,10 @@ function Compra() {
   };
 
   const columns = [
-    { field: "compraId", headerName: "ID", width: 90 },
+    { field: "sedeId", headerName: "ID de la sede", width: 90 },
     {
       field: "tipoEId",
-      headerName: "Tipo de compra",
+      headerName: "Tipo de equipo",
       width: 200
     },
     {

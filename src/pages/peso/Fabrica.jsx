@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/fabrica.css';
+import '../../css/page/peso/fabrica.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -15,8 +15,7 @@ function Fabrica() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.fabricaId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          nombre: item.nombre
         }));
         setData(transformedData);
       } catch (error) {
@@ -34,15 +33,10 @@ function Fabrica() {
   const columns = [
     { field: "fabricaId", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de fabrica",
+      field: "nombre",
+      headerName: "Nombre",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del fabrica",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

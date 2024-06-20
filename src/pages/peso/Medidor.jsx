@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/medidor.css';
+import '../../css/page/peso/medidor.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -15,8 +15,7 @@ function Medidor() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.medidorId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          noSerie: item.noSerie
         }));
         setData(transformedData);
       } catch (error) {
@@ -34,15 +33,10 @@ function Medidor() {
   const columns = [
     { field: "medidorId", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de medidor",
+      field: "noSerie",
+      headerName: "noSerie",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del medidor",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

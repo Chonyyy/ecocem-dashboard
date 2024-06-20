@@ -1,4 +1,4 @@
-import '../../css/page/mantenimiento/entidadCompradora.css';
+import '../../css/page/peso/entidadCompradora.css';
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
@@ -34,7 +34,7 @@ function EntidadCompradora() {
     { field: "entidadCompradoraId", headerName: "ID", width: 90 },
     {
       field: "nombreEntidadCompradora",
-      headerName: "Nombre de la entidad compradora",
+      headerName: "Nombre",
       width: 200
     },
     {
