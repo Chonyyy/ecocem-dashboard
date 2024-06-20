@@ -18,32 +18,44 @@ import OrdenTrabajo from './pages/mantenimiento/OrdenTrabajo';
 import Reporte from './pages/mantenimiento/Reporte';
 import RoturaEquipo from './pages/mantenimiento/RoturaEquipo';
 import TipoRotura from './pages/mantenimiento/TipoRotura';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './components/Login';
 
 function App() {
   return (
     <Router>
-      <Topbar />
-      <div className="container">
-        <Sidebar />
-        <Routes>
-          <Route path='/accion-mantenimiento' element={<AccionMantenimiento />} />
-          <Route path='/accion-mantenimiento-create' element={<AccionMantenimientoCreate />} />
-          <Route path='/equipo' element={<Equipo />} />
-          <Route path='/herramientas' element={<Herramientas />} />
-          <Route path='/orden-trabajo' element={<OrdenTrabajo />} />
-          <Route path='/reporte' element={<Reporte />} />
-          <Route path='/rotura-equipo' element={<RoturaEquipo />} />
-          <Route path='/tipo-rotura' element={<TipoRotura />} />
-
-          <Route path="/" element={<Home />} />
-          <Route path="/users" element={<UserList />} />
-          <Route path="/user/:userId" element={<User />} />
-          <Route path="/newUser" element={<NewUser />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/product/:productId" element={<Product />} />
-          <Route path="/newproduct" element={<NewProduct />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path='*'
+          element={
+            <div>
+              <Topbar />
+              <div className="container">
+                <Sidebar />
+                <Routes>
+                  <Route path='/accion-mantenimiento' element={<ProtectedRoute element={AccionMantenimiento} />} />
+                  <Route path='/accion-mantenimiento-create' element={<ProtectedRoute element={AccionMantenimientoCreate} />} />
+                  <Route path='/equipo' element={<ProtectedRoute element={Equipo} />} />
+                  <Route path='/herramientas' element={<ProtectedRoute element={Herramientas} />} />
+                  <Route path='/orden-trabajo' element={<ProtectedRoute element={OrdenTrabajo} />} />
+                  <Route path='/reporte' element={<ProtectedRoute element={Reporte} />} />
+                  <Route path='/rotura-equipo' element={<ProtectedRoute element={RoturaEquipo} />} />
+                  <Route path='/tipo-rotura' element={<ProtectedRoute element={TipoRotura} />} />
+                  <Route path="/" element={<ProtectedRoute element={Home} />} />
+                  
+                  <Route path="/users" element={<UserList />} />
+                  <Route path="/user/:userId" element={<User />} />
+                  <Route path="/newUser" element={<NewUser />} />
+                  <Route path="/products" element={<ProductList />} />
+                  <Route path="/product/:productId" element={<Product />} />
+                  <Route path="/newproduct" element={<NewProduct />} />
+                </Routes>
+              </div>
+            </div>
+          }
+        />
+      </Routes>
     </Router>
   );
 }
