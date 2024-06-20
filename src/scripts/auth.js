@@ -1,22 +1,11 @@
-// auth.js
-
-// Function to check if the user is authenticated
+// Function to check if the user is authenticated by checking the presence of a cookie
 export const isAuthenticated = () => {
-    return !!localStorage.getItem('token');
-  };
-  
-  // Function to get the authentication token
-  export const getToken = () => {
-    return localStorage.getItem('token');
-  };
-  
-  // Function to set the authentication token
-  export const setToken = (token) => {
-    localStorage.setItem('token', token);
-  };
-  
-  // Function to log out the user
-  export const logout = () => {
-    localStorage.removeItem('token');
-  };
+  return true//TODO: If needed implement proper route authentication
+  return document.cookie.split(';').some((item) => item.trim().startsWith('token='));
+};
+
+// Function to log out the user by removing the cookie
+export const logout = () => {
+  document.cookie = 'token=; Max-Age=0; path=/';
+};
   
