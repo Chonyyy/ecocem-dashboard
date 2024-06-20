@@ -16,7 +16,7 @@ function TipoRoturaCreate() {
         nombreRotura: nombreRotura,
         descripcion: descripcion
       };
-      const response = await axios.post('/TipoRotura', newEntry);
+      const response = await axios.post('/Rotura', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }

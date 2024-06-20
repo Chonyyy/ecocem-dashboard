@@ -14,7 +14,7 @@ function OrdenTrabajoCreate() {
     const [brigadas, setBrigadas] = useState([]);
   
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/Brigada`)
+      axios.get(`/Brigada`)
         .then(res => {
           setBrigadas(res.data);
         })
@@ -25,7 +25,7 @@ function OrdenTrabajoCreate() {
   const [equipos, setEquipos] = useState([]);
   
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Equipo`)
+    axios.get(`/Equipo`)
       .then(res => {
         setEquipos(res.data);
       })
@@ -35,7 +35,7 @@ function OrdenTrabajoCreate() {
   const [trabajadores, setTrabajadores] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Trabajador`)
+    axios.get(`/Trabajador`)
       .then(res => {
         setTrabajadores(res.data);
       })

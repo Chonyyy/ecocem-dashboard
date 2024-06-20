@@ -12,7 +12,7 @@ function EquipoCreate() {
     const [tiposEquipos, setTiposEquipos] = useState([]);
   
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/TipoEquipo`)
+      axios.get(`/TipoEquipo`)
         .then(res => {
           setTiposEquipos(res.data);
         })
@@ -23,7 +23,7 @@ function EquipoCreate() {
   const [sedes, setSedes] = useState([]);
   
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Sede`)
+    axios.get(`/Sede`)
       .then(res => {
         setSedes(res.data);
       })

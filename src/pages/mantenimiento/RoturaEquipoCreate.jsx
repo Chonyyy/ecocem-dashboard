@@ -12,7 +12,7 @@ function RoturaEquipoCreate() {
     const [roturas, setRoturas] = useState([]);
   
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/Rotura`)
+      axios.get(`/Rotura`)
         .then(res => {
           setRoturas(res.data);
         })
@@ -23,7 +23,7 @@ function RoturaEquipoCreate() {
   const [equipos, setEquipos] = useState([]);
   
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Equipo`)
+    axios.get(`/Equipo`)
       .then(res => {
         setEquipos(res.data);
       })

@@ -15,7 +15,7 @@ function HerramientasCreate() {
         nombre: nombre,
         descripcion: descripcion
       };
-      const response = await axios.post('/Herramientas', newEntry);
+      const response = await axios.post('/Herramienta', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }

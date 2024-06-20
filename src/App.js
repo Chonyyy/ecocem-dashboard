@@ -49,11 +49,16 @@ function App() {
                   <Route path='/accion-mantenimiento' element={<ProtectedRoute element={AccionMantenimiento} />} />
                   <Route path='/accion-mantenimiento-create' element={<ProtectedRoute element={AccionMantenimientoCreate} />} />
                   <Route path='/equipo' element={<ProtectedRoute element={Equipo} />} />
+                  <Route path='/equipo-create' element={<ProtectedRoute element={EquipoCreate} />} />
                   <Route path='/herramientas' element={<ProtectedRoute element={Herramientas} />} />
+                  <Route path='/herramientas-create' element={<ProtectedRoute element={HerramientasCreate} />} />
                   <Route path='/orden-trabajo' element={<ProtectedRoute element={OrdenTrabajo} />} />
+                  <Route path='/orden-trabajo-create' element={<ProtectedRoute element={OrdenTrabajoCreate} />} />
                   <Route path='/reporte' element={<ProtectedRoute element={Reporte} />} />
                   <Route path='/rotura-equipo' element={<ProtectedRoute element={RoturaEquipo} />} />
+                  <Route path='/rotura-equipo-create' element={<ProtectedRoute element={RoturaEquipoCreate} />} />
                   <Route path='/tipo-rotura' element={<ProtectedRoute element={TipoRotura} />} />
+                  <Route path='/tipo-rotura-create' element={<ProtectedRoute element={TipoRoturaCreate} />} />
                   <Route path="/" element={<ProtectedRoute element={Home} />} />
                   
                   <Route path="/users" element={<UserList />} />

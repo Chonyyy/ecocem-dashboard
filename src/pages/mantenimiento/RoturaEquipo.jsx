@@ -11,14 +11,14 @@ function RoturaEquipo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/Herramienta'); // Update with your .NET API endpoint
+        const response = await axios.get('/RoturaEquipo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
             equipoId: item.equipoId,
             roturaId: item.roturaId,
             fechaId: item.fechaId
           }));
-    
+          setData(transformedData);
     } catch (error) {
         console.error("Error fetching data:", error);
       }

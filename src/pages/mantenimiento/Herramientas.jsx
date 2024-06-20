@@ -14,10 +14,11 @@ function Herramientas() {
         const response = await axios.get('/Herramienta'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-            herramientaId: item.herramientaId,
+            id: item.herramientaId,
             nombre: item.nombre,
             descripcion: item.descripcion
           }));
+          setData(transformedData);
     
     } catch (error) {
         console.error("Error fetching data:", error);
@@ -32,7 +33,7 @@ function Herramientas() {
   };
 
   const columns = [
-    { field: "herramientaId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
         field: "nombre",
         headerName: "Nombre",

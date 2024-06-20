@@ -1,0 +1,19 @@
+.carga{
+    flex: 4;
+    top: 50px;
+}
+
+.cargaEdit{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.cargaDelete{
+    color: red;
+    cursor: pointer;
+}

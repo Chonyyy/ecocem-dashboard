@@ -32,7 +32,7 @@ function Equipo() {
   };
 
   const columns = [
-    { field: "equipoId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
       field: "tipoEId",
       headerName: "Tipo de equipo",

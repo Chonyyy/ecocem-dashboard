@@ -11,14 +11,14 @@ function TipoRotura() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/Herramienta'); // Update with your .NET API endpoint
+        const response = await axios.get('/Rotura'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-            roturaId: item.roturaId,
+            id: item.roturaId,
             nombreRotura: item.nombreRotura,
             descripcion: item.descripcion
           }));
-    
+          setData(transformedData);
     } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -32,7 +32,7 @@ function TipoRotura() {
   };
 
   const columns = [
-    { field: "roturaId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
         field: "nombreRotura",
         headerName: "Nombre de la rotura",

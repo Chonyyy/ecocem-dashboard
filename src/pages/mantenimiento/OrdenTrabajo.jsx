@@ -11,7 +11,7 @@ function OrdenTrabajo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/Herramienta'); // Update with your .NET API endpoint
+        const response = await axios.get('/OrdenTrabajo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
             equipoId: item.equipoId,
@@ -19,7 +19,7 @@ function OrdenTrabajo() {
             trabajadorId: item.trabajadorId,
             fechaId: item.fechaId
           }));
-    
+          setData(transformedData);
     } catch (error) {
         console.error("Error fetching data:", error);
       }

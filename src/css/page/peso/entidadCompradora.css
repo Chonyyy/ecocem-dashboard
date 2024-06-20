@@ -1,0 +1,19 @@
+.entidadCompradora{
+    flex: 4;
+    top: 50px;
+}
+
+.entidadCompradoraEdit{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.entidadCompradoraDelete{
+    color: red;
+    cursor: pointer;
+}
