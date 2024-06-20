@@ -23,12 +23,19 @@
     color: rgb(151, 150, 150);
   }
   
-  .newEquipoItem > textarea {
-    height: 100px; /* Adjust the height as needed */
+  .newEquipoItem > input {
+    width: 40%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
     resize: vertical; /* Allows vertical resizing */
+  }
+  
+  .newEquipoItem > select {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
   }
   
   .newEquipoButton {

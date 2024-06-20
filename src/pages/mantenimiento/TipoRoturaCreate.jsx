@@ -1,17 +1,20 @@
-import '../../css/page/mantenimiento/equipoCreate.css';
+import '../../css/page/mantenimiento/tipoRoturaCreate.css';
 import axios from 'axios';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function TipoRoturaCreate() {
-  const [descripcion, setDescripcion] = useState('');
+  const [nombreRotura, setNombreRotura] = useState("");
+  const [descripcion, setDescripcion] = useState("")
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const newEntry = {
-        amId: 0,
-        description: descripcion
+        roturaId: 0,
+        nombreRotura: nombreRotura,
+        descripcion: descripcion
       };
       const response = await axios.post('/TipoRotura', newEntry);
       if (response.status === 200) {
@@ -28,13 +31,22 @@ function TipoRoturaCreate() {
       <h1 className="newTipoRoturaTitle">Crear TipoRotura</h1>
       <form className="newTipoRoturaForm" onSubmit={handleSubmit}>
         <div className="newTipoRoturaItem">
-          <label>Descripción</label>
+          <label>Nombre de la Rotura</label>
+          <input
+            value={nombreRotura}
+            placeholder="Ingrese el nombre de la Rotura"
+            onChange={(a) => setNombreRotura(a.target.value)}
+            className="newTipoRoturaTextarea"
+          />
+
+          <label>Descripción de la Rotura</label>
           <textarea
             placeholder="Descripción"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
-            className="newTipoRoturaTextarea"
+            className="newAccionMantenimientoTextarea"
           />
+
         </div>
         <button type="submit" className="newTipoRoturaButton">Create</button>
       </form>

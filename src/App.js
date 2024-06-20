@@ -10,6 +10,7 @@ import ProductList from "./pages/ProductList";
 import Product from "./pages/Product";
 import NewProduct from "./pages/NewProduct";
 
+//Mantenimiento
 import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
 import AccionMantenimientoCreate from './pages/mantenimiento/AccionMantenimientoCreate';
 import Equipo from './pages/mantenimiento/Equipo';
@@ -24,6 +25,10 @@ import RoturaEquipoCreate from './pages/mantenimiento/RoturaEquipoCreate';
 import TipoRotura from './pages/mantenimiento/TipoRotura';
 import TipoRoturaCreate from './pages/mantenimiento/TipoRoturaCreate';
 
+//Peso
+
+//Administracion
+
 function App() {
   return (
     <Router>
@@ -31,6 +36,7 @@ function App() {
       <div className="container">
         <Sidebar />
         <Routes>
+          {/* Mantenimiento */}
           <Route path='/accion-mantenimiento' element={<AccionMantenimiento />} />
           <Route path='/accion-mantenimiento-create' element={<AccionMantenimientoCreate />} />
           <Route path='/equipo' element={<Equipo />} />
@@ -45,6 +51,11 @@ function App() {
           <Route path='/tipo-rotura' element={<TipoRotura />} />
           <Route path='/tipo-rotura-create' element={<TipoRoturaCreate />} />
 
+          {/* Peso */}
+
+          {/* Administracion */}
+
+          {/* Otros */}
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<UserList />} />
           <Route path="/user/:userId" element={<User />} />

@@ -23,13 +23,22 @@
     color: rgb(151, 150, 150);
   }
   
-  .newOrdenTrabajoItem > textarea {
-    height: 100px; /* Adjust the height as needed */
+
+  .newOrdenTrabajoItem > input {
+    width: 40%;
     padding: 10px;
     border: 1px solid gray;
     border-radius: 5px;
     resize: vertical; /* Allows vertical resizing */
   }
+  
+  .newOrdenTrabajoItem > select {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+  
   
   .newOrdenTrabajoButton {
     width: 200px;

@@ -30,6 +30,14 @@
     border-radius: 5px;
     resize: vertical; /* Allows vertical resizing */
   }
+
+  .newTipoRoturaItem > input {
+    width: 40%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    resize: vertical; /* Allows vertical resizing */
+  }
   
   .newTipoRoturaButton {
     width: 200px;
