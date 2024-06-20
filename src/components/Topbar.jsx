@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import '../css/component/topbar.css'
-// import "./topbar.css";
+import { checkAdmin } from '../scripts/auth';
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 
 function Topbar() {
+
+  const [administrator, setAdministrator] = useState(false);//TODO: Aplicar cambios en el sitio dependiendo de si se es adminsitrador o no 
+
+  useEffect(() => {
+    if (checkAdmin()) {
+      setAdministrator(true);
+    }
+  }, []);
+
   return (
     <div className="topbar">
       <div className="topbarWrapper">

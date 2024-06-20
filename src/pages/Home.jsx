@@ -7,30 +7,27 @@ import WidgetLg from '../components/WidgetLg';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { checkAuth, checkAdmin } from '../scripts/auth';
 
 function Home() {
   const [authenticated, setAuthenticated] = useState(false);
+  const [administrator, setAdministrator] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await axios.get('/Ok/admin'); //TODO: Change this to propper role relationship
-        if (response.status === 200) {
-          setAuthenticated(true);
-        } else {
-          navigate('/login');
-        }
-      } catch (error) {
-        navigate('/login');
+    if (checkAuth()) {
+      setAuthenticated(true);
+      if (checkAdmin()) {
+        setAdministrator(true);
       }
-    };
-
-    checkAuth();
+    }
+    else {
+      navigate('/login')
+    }
   }, [navigate]);
 
   if (!authenticated) {
-    return <div>Loading...</div>;//modify this component so it looks better
+    return <div>Loading...</div>;//TODO: modify this component so it looks better
   }
 
   return (

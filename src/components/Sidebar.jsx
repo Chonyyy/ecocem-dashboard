@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/component/sidebar.css'
 import { useLocation } from 'react-router-dom';
 import {
@@ -17,8 +17,17 @@ import {
   HomeOutlined
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import { checkAdmin } from '../scripts/auth';
 
 function Sidebar() {
+  const [administrator, setAdministrator] = useState(false);//TODO: Hacer cambios en el sitio dependiendo de si se es administrador o no
+
+  useEffect(() => {
+    if (checkAdmin()) {
+      setAdministrator(true);
+    }
+  }, []);
+
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -198,54 +207,54 @@ function Sidebar() {
           {staffOpen && (
             <ul className="sidebarList">
 
-            <Link to="/brigada" className="link">
-              <li className={`sidebarListItem ${currentPath === '/brigada' ? 'active' : ''}`}>
-                <PermIdentity className="sidebarIcon" />
-                Brigada
-              </li>
-            </Link>
+              <Link to="/brigada" className="link">
+                <li className={`sidebarListItem ${currentPath === '/brigada' ? 'active' : ''}`}>
+                  <PermIdentity className="sidebarIcon" />
+                  Brigada
+                </li>
+              </Link>
 
-            <Link to="/Sede" className="link">
-              <li className={`sidebarListItem ${currentPath === '/Sede' ? 'active' : ''}`}>
-                <Storefront className="sidebarIcon" />
-                Sede
-              </li>
-            </Link>
+              <Link to="/Sede" className="link">
+                <li className={`sidebarListItem ${currentPath === '/Sede' ? 'active' : ''}`}>
+                  <Storefront className="sidebarIcon" />
+                  Sede
+                </li>
+              </Link>
 
-            <Link to="/sucursal" className="link">
-              <li className={`sidebarListItem ${currentPath === '/sucursal' ? 'active' : ''}`}>
-                <PermIdentity className="sidebarIcon" />
-                Sucursal
-              </li>
-            </Link>
+              <Link to="/sucursal" className="link">
+                <li className={`sidebarListItem ${currentPath === '/sucursal' ? 'active' : ''}`}>
+                  <PermIdentity className="sidebarIcon" />
+                  Sucursal
+                </li>
+              </Link>
 
-            <Link to="/tipo-equipo" className="link">
-              <li className={`sidebarListItem ${currentPath === '/tipo-equipo' ? 'active' : ''}`}>
-                <Storefront className="sidebarIcon" />
-                Tipo de Equipo
-              </li>
-            </Link>
+              <Link to="/tipo-equipo" className="link">
+                <li className={`sidebarListItem ${currentPath === '/tipo-equipo' ? 'active' : ''}`}>
+                  <Storefront className="sidebarIcon" />
+                  Tipo de Equipo
+                </li>
+              </Link>
 
-            <Link to="/trabajador" className="link">
-              <li className={`sidebarListItem ${currentPath === '/trabajador' ? 'active' : ''}`}>
-                <PermIdentity className="sidebarIcon" />
-                Trabajador
-              </li>
-            </Link>
+              <Link to="/trabajador" className="link">
+                <li className={`sidebarListItem ${currentPath === '/trabajador' ? 'active' : ''}`}>
+                  <PermIdentity className="sidebarIcon" />
+                  Trabajador
+                </li>
+              </Link>
 
-            <Link to="/empresa" className="link">
-              <li className={`sidebarListItem ${currentPath === '/empresa' ? 'active' : ''}`}>
-                <Storefront className="sidebarIcon" />
-                Empresa
-              </li>
-            </Link>
+              <Link to="/empresa" className="link">
+                <li className={`sidebarListItem ${currentPath === '/empresa' ? 'active' : ''}`}>
+                  <Storefront className="sidebarIcon" />
+                  Empresa
+                </li>
+              </Link>
 
-            <Link to="/registrar-usuario" className="link">
-              <li className={`sidebarListItem ${currentPath === '/registrar-usuario' ? 'active' : ''}`}>
-                <PermIdentity className="sidebarIcon" />
-                Registrar Usuario
-              </li>
-            </Link>
+              <Link to="/registrar-usuario" className="link">
+                <li className={`sidebarListItem ${currentPath === '/registrar-usuario' ? 'active' : ''}`}>
+                  <PermIdentity className="sidebarIcon" />
+                  Registrar Usuario
+                </li>
+              </Link>
 
             </ul>)}
         </div>
@@ -255,33 +264,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-
-/*
-[X]Gestion de mantenimiento 
-[X]-accion de mantenimiento 
-[X]-equipo
-[X]-herramientas
-[X]-orden de trabajo
-[X]-reporte
-[X]-rotura de equipo
-[X]-tipo de rotura
-[X]Calculo de Peso
-[x]-bascula
-[x]-carga
-[x]-compra
-[x]-entidad compradora
-[x]-fabrica
-[x]-medidor
-[x]-silo
-[x]-tipo de cemento
-[x]-vehiculo
-[x]-venta
-[X]Gestion de admin
-[x]-brigada
-[x]-sede
-[x]-sucursal
-[x]-tipo de equipo
-[x]-trabajador
-[x]-empresa
-[x]-registrar usuario
-  */
