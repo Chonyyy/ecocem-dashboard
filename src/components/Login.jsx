@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '../scripts/auth';
 import axios from 'axios';
 import '../css/component/login.css';
 
@@ -12,11 +13,13 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/login', { name, password });
-      localStorage.setItem('token', response.data.token);
-      navigate('/');
-    } catch (err) {
-      setError('Invalid credentials');
+      const response = await axios.post('/Login', { name, password }, { withCredentials: true });
+      if (response.status === 200) {
+        // Redirect to protected route
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
     }
   };
 
