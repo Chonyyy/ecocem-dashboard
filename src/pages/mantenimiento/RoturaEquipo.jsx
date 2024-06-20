@@ -14,7 +14,7 @@ function RoturaEquipo() {
         const response = await axios.get('/RoturaEquipo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-            equipoId: item.equipoId,
+            id: item.equipoId,
             roturaId: item.roturaId,
             fechaId: item.fechaId
           }));
@@ -32,7 +32,7 @@ function RoturaEquipo() {
   };
 
   const columns = [
-    { field: "equipoId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
         field: "roturaId",
         headerName: "Rotura",
@@ -41,7 +41,7 @@ function RoturaEquipo() {
     {
         field: "fechaId",
         headerName: "Fecha",
-        type: 'dateTime',
+        type: 'Date',
         width: 200
     },
     {
