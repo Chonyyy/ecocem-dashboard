@@ -11,7 +11,7 @@ function Equipo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5103/api/Equipo'); // Update with your .NET API endpoint
+        const response = await axios.get('/Equipo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.equipoId,

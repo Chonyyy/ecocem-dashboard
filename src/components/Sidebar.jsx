@@ -266,22 +266,22 @@ export default Sidebar;
 [X]-rotura de equipo
 [X]-tipo de rotura
 [X]Calculo de Peso
-[ ]-bascula
-[ ]-carga
-[ ]-compra
-[ ]-entidad compradora
-[ ]-fabrica
-[ ]-medidor
-[ ]-silo
-[ ]-tipo de cemento
-[ ]-vehiculo
-[ ]-venta
+[x]-bascula
+[x]-carga
+[x]-compra
+[x]-entidad compradora
+[x]-fabrica
+[x]-medidor
+[x]-silo
+[x]-tipo de cemento
+[x]-vehiculo
+[x]-venta
 [X]Gestion de admin
-[ ]-brigada
-[ ]-cede
-[ ]-sucursal
-[ ]-tipo de equipo
-[ ]-trabajador
-[ ]-empresa
-[ ]-registrar usuario
-*/
+[x]-brigada
+[x]-sede
+[x]-sucursal
+[x]-tipo de equipo
+[x]-trabajador
+[x]-empresa
+[x]-registrar usuario
+  */
