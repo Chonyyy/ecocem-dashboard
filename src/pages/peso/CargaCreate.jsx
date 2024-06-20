@@ -19,7 +19,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
       const [tipoCementos, setTipoCementos] = useState([]);
     
       useEffect(() => {
-        axios.get(`http://localhost:5103/api/TipoCemento`)
+        axios.get(`/TipoCemento`)
           .then(res => {
             setTipoCementos(res.data);
           })
@@ -30,7 +30,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
     const [silos, setSilos] = useState([]);
     
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/Silo`)
+      axios.get(`/api/Silo`)
         .then(res => {
           setSilos(res.data);
         })
@@ -41,7 +41,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
         const [vehiculos, setVehiculos] = useState([]);
     
         useEffect(() => {
-          axios.get(`http://localhost:5103/api/Vehiculo`)
+          axios.get(`/Vehiculo`)
             .then(res => {
               setVehiculos(res.data);
             })
@@ -52,7 +52,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
         const [medidores, setMedidores] = useState([]);
   
         useEffect(() => {
-          axios.get(`http://localhost:5103/api/Medidor`)
+          axios.get(`/Medidor`)
             .then(res => {
               setMedidores(res.data);
             })
@@ -63,7 +63,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
         const [basculas, setBasculas] = useState([]);
     
         useEffect(() => {
-          axios.get(`http://localhost:5103/api/Bascula`)
+          axios.get(`/Bascula`)
             .then(res => {
               setBasculas(res.data);
             })
@@ -89,7 +89,7 @@ function CargaCreate({sedeId, entidadCompradoraId, fechaVentaId, onClose}) {
         entidadCompradoraId: entidadCompradoraId,
         fechaVentaId: fechaVentaId
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Carga', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }

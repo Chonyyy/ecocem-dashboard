@@ -45,7 +45,7 @@ function BasculaCreate() {
         sedeId:noSede,
         descripcion:descripcion
       };
-      const response = await axios.post('/Herramienta', newEntry);
+      const response = await axios.post('/Bascula', newEntry);
       if (response.status === 200) {
         console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
       }

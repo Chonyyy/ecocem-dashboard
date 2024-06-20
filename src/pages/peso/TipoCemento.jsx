@@ -61,7 +61,7 @@ function TipoCemento() {
     <div className="tipoCemento">
       <div className="tableTitleContainer">
         <h1 className="tableTitle">TipoCementos</h1>
-        <Link to="/tipoCemento-create">
+        <Link to="/tipo-cemento-create">
           <button className="tableAddButton">Create</button>
         </Link>
       </div>

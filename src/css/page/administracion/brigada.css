@@ -1,0 +1,19 @@
+.brigada{
+    flex: 4;
+    top: 50px;
+}
+
+.brigadaEdit{
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.brigadaDelete{
+    color: red;
+    cursor: pointer;
+}
