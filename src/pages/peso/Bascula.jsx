@@ -4,13 +4,28 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { checkAuth, checkAdmin } from '../../scripts/auth';
+import { useNavigate } from 'react-router-dom';
 
 function Bascula() {
   const [data, setData] = useState([]);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [administrator, setAdministrator] = useState(false);//TODO: implement changes for admins
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (checkAuth()) {
+          setAuthenticated(true);
+          if (checkAdmin()) {
+            setAdministrator(true);
+          }
+        }
+        else {
+          navigate('/login')
+        }
+
         const response = await axios.get('/Bascula'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
@@ -26,7 +41,11 @@ function Bascula() {
     };
 
     fetchData();
-  }, []);
+  }, [navigate]);
+
+  if (!authenticated) {
+    return <div>Loading...</div>;//TODO: modify this component so it looks better
+  }
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));

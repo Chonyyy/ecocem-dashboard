@@ -4,6 +4,8 @@ import { DeleteOutline } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
+import { checkAuth, checkAdmin } from '../../scripts/auth';
+import { useNavigate } from 'react-router-dom';
 
 function TipoCemento() {
   const [data, setData] = useState([]);
