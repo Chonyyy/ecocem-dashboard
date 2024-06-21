@@ -7,7 +7,7 @@ export const isAuthenticated = () => {
 
 export const logout = async () => {
   try {
-    await axiosInstance.post('/logout');
+    // await axiosInstance.post('/logout');
     // Clear local storage or state if you store user info there
     localStorage.removeItem('user');
   } catch (error) {

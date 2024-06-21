@@ -30,8 +30,9 @@ function Sede() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.sedeId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          nombreSede: item.nombreSede,
+          ubicacionSede: item.ubicacionSede,
+          empresaId: item.empresaId
         }));
         setData(transformedData);
       } catch (error) {
@@ -53,13 +54,19 @@ function Sede() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de sede",
+      field: "nombreSede",
+      headerName: "Nombre",
       width: 200
     },
     {
-        field: "sedeId",
-        headerName: "Sede del sede",
+        field: "ubicacionSede",
+        headerName: "Ubicacion",
+        width: 200
+      },
+    
+      {
+        field: "empresaId",
+        headerName: "Empresa",
         width: 200
       },
     {

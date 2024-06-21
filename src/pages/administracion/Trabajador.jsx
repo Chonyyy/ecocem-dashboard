@@ -30,7 +30,7 @@ function Trabajador() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.trabajadorId,
-          tipoEId: item.tipoEId,
+          nombreTrabajador: item.nombreTrabajador,
           sedeId: item.sedeId
         }));
         setData(transformedData);
@@ -53,8 +53,8 @@ function Trabajador() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de trabajador",
+      field: "nombreTrabajador",
+      headerName: "Nombre",
       width: 200
     },
     {

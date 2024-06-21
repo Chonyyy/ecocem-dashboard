@@ -29,9 +29,8 @@ function TipoEquipo() {
         const response = await axios.get('/TipoEquipo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-          id: item.tipoEquipoId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          id: item.tipoEId,
+          tipoE: item.tipoE
         }));
         setData(transformedData);
       } catch (error) {
@@ -53,15 +52,10 @@ function TipoEquipo() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de tipoEquipo",
+      field: "tipoE",
+      headerName: "Tipo de Equipo",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del tipoEquipo",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

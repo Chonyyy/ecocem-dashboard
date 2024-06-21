@@ -30,8 +30,7 @@ function Brigada() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.brigadaId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          descripcion: item.descripcion
         }));
         setData(transformedData);
       } catch (error) {
@@ -53,15 +52,10 @@ function Brigada() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de brigada",
+      field: "descripcion",
+      headerName: "descripcion",
       width: 200
     },
-    {
-        field: "sedeId",
-        headerName: "Sede del brigada",
-        width: 200
-      },
     {
       field: "action",
       headerName: "Action",

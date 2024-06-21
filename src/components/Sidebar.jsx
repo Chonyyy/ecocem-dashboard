@@ -184,24 +184,7 @@ function Sidebar() {
 
             </ul>)}
         </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle" onClick={toggleNotifications}>Notificaciones</h3>
-          {notificationsOpen && (
-            <ul className="sidebarList">
-              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
-                <MailOutline className="sidebarIcon" />
-                Mail
-              </li>
-              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
-                <DynamicFeed className="sidebarIcon" />
-                Feedback
-              </li>
-              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
-                <ChatBubbleOutline className="sidebarIcon" />
-                Messages
-              </li>
-            </ul>)}
-        </div>
+        
         <div className="sidebarMenu">
           <h3 className="sidebarTitle" onClick={toggleStaff}>Administración</h3>
           {staffOpen && (
@@ -256,6 +239,24 @@ function Sidebar() {
                 </li>
               </Link>
 
+            </ul>)}
+        </div>
+        <div className="sidebarMenu">
+          <h3 className="sidebarTitle" onClick={toggleNotifications}>Notificaciones</h3>
+          {notificationsOpen && (
+            <ul className="sidebarList">
+              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
+                <MailOutline className="sidebarIcon" />
+                Mail
+              </li>
+              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
+                <DynamicFeed className="sidebarIcon" />
+                Feedback
+              </li>
+              <li className={`sidebarListItem ${currentPath === '/ni' ? 'active' : ''}`}>
+                <ChatBubbleOutline className="sidebarIcon" />
+                Messages
+              </li>
             </ul>)}
         </div>
       </div>

@@ -55,6 +55,20 @@ import Venta from './pages/peso/Venta';
 import VentaCreate from './pages/peso/VentaCreate';
 
 //Administracion
+import Brigada from './pages/administracion/Brigada';
+import BrigadaCreate from './pages/administracion/BrigadaCreate';
+import Empresa from './pages/administracion/Empresa';
+import EmpresaCreate from './pages/administracion/EmpresaCreate';
+import RegistrarUsuario from './pages/administracion/RegistrarUsuario';
+// import RegistrarUsuarioCreate from './pages/administracion/RegistrarUsuarioCreate';
+import Sede from './pages/administracion/Sede';
+import SedeCreate from './pages/administracion/SedeCreate';
+import Sucursal from './pages/administracion/Sucursal';
+// import SucursalCreate from './pages/administracion/SucursalCreate';
+import TipoEquipo from './pages/administracion/TipoEquipo';
+import TipoEquipoCreate from './pages/administracion/TipoEquipoCreate';
+import Trabajador from './pages/administracion/Trabajador';
+import TrabajadorCreate from './pages/administracion/TrabajadorCreate';
 
 function App() {
   return (
@@ -108,6 +122,21 @@ function App() {
                   <Route path='/venta-create' element={<ProtectedRoute element={VentaCreate} />} />
                   
                   {/* Administracion */}
+                  <Route path='/brigada' element={<ProtectedRoute element={Brigada} />} />
+                  <Route path='/brigada-create' element={<ProtectedRoute element={BrigadaCreate} />} />
+                  <Route path='/empresa' element={<ProtectedRoute element={Empresa} />} />
+                  <Route path='/empresa-create' element={<ProtectedRoute element={EmpresaCreate} />} />
+                  <Route path='/registar-usuario' element={<ProtectedRoute element={RegistrarUsuario} />} />
+                  <Route path='/registar-usuario-create' element={<ProtectedRoute element={RegistrarUsuario} />} />
+                  <Route path='/sede' element={<ProtectedRoute element={Sede} />} />
+                  <Route path='/sede-create' element={<ProtectedRoute element={SedeCreate} />} />
+                  <Route path='/sucursal' element={<ProtectedRoute element={Sucursal} />} />
+                  {/* <Route path='/sucursal-create' element={<ProtectedRoute element={SucursalCreate} />} /> */}
+                  <Route path='/tipo-equipo' element={<ProtectedRoute element={TipoEquipo} />} />
+                  <Route path='/tipo-equipo-create' element={<ProtectedRoute element={TipoEquipoCreate} />} />
+                  <Route path='/trabajador' element={<ProtectedRoute element={Trabajador} />} />
+                  <Route path='/trabajador-create' element={<ProtectedRoute element={TrabajadorCreate} />} />
+                  
 
                   {/* Otros */}
                   <Route path="/users" element={<UserList />} />
