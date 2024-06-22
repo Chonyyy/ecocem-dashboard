@@ -225,6 +225,13 @@ function Sidebar() {
                 </li>
               </Link>
 
+              <Link to="/registrar-usuario" className="link">
+                <li className={`sidebarListItem ${currentPath === '/registrar-usuario' ? 'active' : ''}`}>
+                  <PermIdentity className="sidebarIcon" />
+                  Registrar Usuario
+                </li>
+              </Link>
+              
               <Link to="/empresa" className="link">
                 <li className={`sidebarListItem ${currentPath === '/empresa' ? 'active' : ''}`}>
                   <Storefront className="sidebarIcon" />
@@ -232,12 +239,6 @@ function Sidebar() {
                 </li>
               </Link>
 
-              <Link to="/registrar-usuario" className="link">
-                <li className={`sidebarListItem ${currentPath === '/registrar-usuario' ? 'active' : ''}`}>
-                  <PermIdentity className="sidebarIcon" />
-                  Registrar Usuario
-                </li>
-              </Link>
 
             </ul>)}
         </div>

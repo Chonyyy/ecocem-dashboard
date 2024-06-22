@@ -60,7 +60,7 @@ import BrigadaCreate from './pages/administracion/BrigadaCreate';
 import Empresa from './pages/administracion/Empresa';
 import EmpresaCreate from './pages/administracion/EmpresaCreate';
 import RegistrarUsuario from './pages/administracion/RegistrarUsuario';
-// import RegistrarUsuarioCreate from './pages/administracion/RegistrarUsuarioCreate';
+import RegistrarUsuarioCreate from './pages/administracion/RegistrarUsuarioCreate';
 import Sede from './pages/administracion/Sede';
 import SedeCreate from './pages/administracion/SedeCreate';
 import Sucursal from './pages/administracion/Sucursal';
@@ -126,8 +126,8 @@ function App() {
                   <Route path='/brigada-create' element={<ProtectedRoute element={BrigadaCreate} />} />
                   <Route path='/empresa' element={<ProtectedRoute element={Empresa} />} />
                   <Route path='/empresa-create' element={<ProtectedRoute element={EmpresaCreate} />} />
-                  <Route path='/registar-usuario' element={<ProtectedRoute element={RegistrarUsuario} />} />
-                  <Route path='/registar-usuario-create' element={<ProtectedRoute element={RegistrarUsuario} />} />
+                  <Route path='/registrar-usuario' element={<ProtectedRoute element={RegistrarUsuario} />} />
+                  <Route path='/registrar-usuario-create' element={<ProtectedRoute element={RegistrarUsuarioCreate} />} />
                   <Route path='/sede' element={<ProtectedRoute element={Sede} />} />
                   <Route path='/sede-create' element={<ProtectedRoute element={SedeCreate} />} />
                   <Route path='/sucursal' element={<ProtectedRoute element={Sucursal} />} />

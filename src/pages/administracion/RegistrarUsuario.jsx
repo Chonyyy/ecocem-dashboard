@@ -26,12 +26,12 @@ function RegistrarUsuario() {
           navigate('/login')
         }
 
-        const response = await axios.get('/RegistrarUsuario'); // Update with your .NET API endpoint
+        const response = await axios.get('/Login'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-          id: item.registrarUsuarioId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          id: item.Name,
+          Sede: item.Sede,
+          Email: item.Email
         }));
         setData(transformedData);
       } catch (error) {
@@ -53,13 +53,13 @@ function RegistrarUsuario() {
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
-      field: "tipoEId",
-      headerName: "Tipo de registrarUsuario",
+      field: "Email",
+      headerName: "Email",
       width: 200
     },
     {
-        field: "sedeId",
-        headerName: "Sede del registrarUsuario",
+        field: "Sede",
+        headerName: "Sede",
         width: 200
       },
     {
@@ -83,10 +83,10 @@ function RegistrarUsuario() {
   ];
 
   return (
-    <div className="registrar-usuario">
+    <div className="registrarUsuario">
       <div className="tableTitleContainer">
-        <h1 className="tableTitle">RegistrarUsuarios</h1>
-        <Link to="/registrarUsuario-create">
+        <h1 className="tableTitle">Usuarios</h1>
+        <Link to="/registrar-usuario-create">
           <button className="tableAddButton">Create</button>
         </Link>
       </div>
