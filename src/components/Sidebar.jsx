@@ -23,9 +23,13 @@ function Sidebar() {
   const [administrator, setAdministrator] = useState(false);//TODO: Hacer cambios en el sitio dependiendo de si se es administrador o no
 
   useEffect(() => {
-    if (checkAdmin()) {
-      setAdministrator(true);
+    const checkAuthenticated = async () => {
+      if (await checkAdmin()) {
+        setAdministrator(true);
+      }
     }
+
+    checkAuthenticated()
   }, []);
 
   const location = useLocation();
@@ -184,7 +188,7 @@ function Sidebar() {
 
             </ul>)}
         </div>
-        
+
         <div className="sidebarMenu">
           <h3 className="sidebarTitle" onClick={toggleStaff}>Administración</h3>
           {staffOpen && (
@@ -231,7 +235,7 @@ function Sidebar() {
                   Registrar Usuario
                 </li>
               </Link>
-              
+
               <Link to="/empresa" className="link">
                 <li className={`sidebarListItem ${currentPath === '/empresa' ? 'active' : ''}`}>
                   <Storefront className="sidebarIcon" />

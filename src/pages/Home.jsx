@@ -15,15 +15,18 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (checkAuth()) {
-      setAuthenticated(true);
-      if (checkAdmin()) {
-        setAdministrator(true);
+    const checkAuthenticated = async () => {
+      if (await checkAuth()) {
+        setAuthenticated(true);
+        if (await checkAdmin()) {
+          setAdministrator(true);
+        }
+      }
+      else {
+        navigate('/login')
       }
     }
-    else {
-      navigate('/login')
-    }
+    checkAuthenticated()
   }, [navigate]);
 
   if (!authenticated) {

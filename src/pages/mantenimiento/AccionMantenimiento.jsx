@@ -16,10 +16,14 @@ function AccionMantenimiento() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (checkAuth()) {
+        if (await checkAuth()) {
           setAuthenticated(true);
-          if (checkAdmin()) {
+          if (await checkAdmin()) {
+            console.log("Admin")
             setAdministrator(true);
+          }
+          else{
+            console.log("NotAdmin")
           }
         }
         else {
@@ -39,7 +43,7 @@ function AccionMantenimiento() {
     };
 
     fetchData();
-  }, [navigate]);
+  }, []);
 
   if (!authenticated) {
     return <div>Loading...</div>;//TODO: modify this component so it looks better
@@ -80,6 +84,7 @@ function AccionMantenimiento() {
     <div className="accionMantenimiento">
       <div className="tableTitleContainer">
         <h1 className="tableTitle">Acciones de Mantenimiento</h1>
+        {/* Example: Bosses can create */}
         {administrator && (
         <Link to="/accion-mantenimiento-create">
           <button className="tableAddButton">Create</button>

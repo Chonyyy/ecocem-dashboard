@@ -8,9 +8,13 @@ function Topbar() {
   const [administrator, setAdministrator] = useState(false);//TODO: Aplicar cambios en el sitio dependiendo de si se es adminsitrador o no 
 
   useEffect(() => {
-    if (checkAdmin()) {
-      setAdministrator(true);
+    const checkAuthenticated = async () => {
+      if (await checkAdmin()) {
+        setAdministrator(true);
+      }
     }
+
+    checkAuthenticated()
   }, []);
 
   return (

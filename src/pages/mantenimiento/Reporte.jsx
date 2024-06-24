@@ -87,9 +87,9 @@ const filtrarLista = async () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (checkAuth()) {
+        if (await checkAuth()) {
           setAuthenticated(true);
-          if (checkAdmin()) {
+          if (await checkAdmin()) {
             setAdministrator(true);
           }
         }
