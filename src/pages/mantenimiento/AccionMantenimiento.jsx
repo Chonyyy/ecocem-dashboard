@@ -93,10 +93,9 @@ function AccionMantenimiento() {
 
       <DataGrid
         rows={data}
-        disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        autoHeight
       />
     </div>
   );

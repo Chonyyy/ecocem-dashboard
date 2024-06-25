@@ -1,6 +1,7 @@
 .silo{
     flex: 4;
     top: 50px;
+    width: 78%;
 }
 
 .siloEdit{

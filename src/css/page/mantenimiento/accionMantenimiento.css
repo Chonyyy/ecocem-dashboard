@@ -1,6 +1,7 @@
 .accionMantenimiento{
-    flex: 4;
+    flex: 0 0;
     top: 50px;
+    width: 78%;
 }
 
 .accionMantenimientoEdit{

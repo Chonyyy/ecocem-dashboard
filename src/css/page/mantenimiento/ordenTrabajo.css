@@ -1,6 +1,7 @@
 .ordenTrabajo{
     flex: 4;
     top: 50px;
+    width: 78%;
 }
 
 .ordenTrabajoEdit{

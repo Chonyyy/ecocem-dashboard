@@ -66,7 +66,7 @@ function UserList() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        autoHeight
       />
     </div>
   );
