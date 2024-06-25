@@ -1,10 +1,10 @@
-.bascula{
+.medicionBascula{
     flex: 4;
     top: 50px;
     width: 78%;
 }
 
-.basculaEdit{
+.medicionBasculaEdit{
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -14,7 +14,7 @@
     margin-right: 20px;
 }
 
-.basculaDelete{
+.medicionBasculaDelete{
     color: red;
     cursor: pointer;
 }

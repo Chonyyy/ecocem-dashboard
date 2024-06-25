@@ -1,10 +1,10 @@
-.bascula{
+.medicionSilo{
     flex: 4;
     top: 50px;
     width: 78%;
 }
 
-.basculaEdit{
+.medicionSiloEdit{
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -14,7 +14,7 @@
     margin-right: 20px;
 }
 
-.basculaDelete{
+.medicionSiloDelete{
     color: red;
     cursor: pointer;
 }

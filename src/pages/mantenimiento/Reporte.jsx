@@ -6,83 +6,12 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { checkAuth, checkAdmin } from '../../scripts/auth';
-import { Box } from '@mui/material';
 
-function Herramientas() {
+function Reporte() {
   const [data, setData] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
-  const [administrator, setAdministrator] = useState(false);
+  const [administrator, setAdministrator] = useState(false);//TODO: implement changes for admins
   const navigate = useNavigate();
-  const [equipoId, setEquipoId] = useState(0);
-  const [fechaSeleccionada, setFechaSeleccionada] = useState({
-    dia: '',
-    mes: '',
-    ano: '',
-  });
-  
-  const [reportes, setReportes] = useState([]);
-
-    //Lista de equipos
-    const [Equipos, setEquipos] = useState([]);
-  
-    useEffect(() => {
-      axios.get(`http://localhost:5103/api/Equipo`)
-        .then(res => {
-          setEquipos(res.data);
-        })
-        .catch(err => console.log(err));
-    }, []);
-
-// Lista de días
-const dias = Array.from({ length:  31 }, (_, i) => i +  1);
-
-// Lista de meses
-const meses = Array.from({ length:  12 }, (_, i) => i +  1);
-
-// Lista de años
-const anos = Array.from({ length:  100 }, (_, i) => new Date().getFullYear() - i);
-
-const handleChange = (e, tipo) => {
-    setFechaSeleccionada({
-      ...fechaSeleccionada,
-      [tipo]: e.target.value,
-    });
-  };
-
-
-const filtrarLista = async () => {
-    try {
-      const response = await axios.get('http://localhost:5103/api/FiltroMantenimiento/GetReportes',{
-        params: {
-            dia: fechaSeleccionada.dia,
-            mes: fechaSeleccionada.mes,
-            anno: fechaSeleccionada.ano,
-            equipoId: equipoId,
-          },
-      });
-      const transformedData = response.data.map(item => ({
-        id: item.equipoId,
-        fechaId: item.fechaId,
-        tiempoRealParoFalla: item.tiempoRealParoFalla,
-        tiempoRealMant: item.tiempoRealMant,
-        tiempoOPeracionReal: item.tiempoOPeracionReal,
-        tiempoParoTrabajosPlan: item.tiempoParoTrabajosPlan,
-        tiempoParoMant: item.tiempoParoMant,
-        tiempoOperacionRequerido: item.tiempoOperacionRequerido,
-        tiempoRequeridoAccProgramadas: item.tiempoRequeridoAccProgramadas,
-        costoTotalMant: item.costoTotalMant,
-        facturacion: item.facturacion,
-        tiempoRealParoFalla: item.tiempoRealParoFalla,
-      }));
-      setData(transformedData);
-      setReportes(response.data);
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    }
-  };
-
-
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,8 +26,25 @@ const filtrarLista = async () => {
           navigate('/login')
         }
 
-    
-    } catch (error) {
+        const response = await axios.get('/Reporte'); // Update with your .NET API endpoint
+        // Transform the response data to fit the DataGrid format
+        const transformedData = response.data.map(item => ({
+          id: item.equipoId,
+          fechaId: item.fechaId,
+          tiempoRealParoFalla: item.tiempoRealParoFalla,
+          tiempoRealMant: item.tiempoRealMant,
+          tiempoOPeracionReal: item.tiempoOPeracionReal,
+          tiempoParoTrabajosPlan: item.tiempoParoTrabajosPlan,
+          tiempoParoMant: item.tiempoParoMant,
+          tiempoOperacionRequerido: item.tiempoOperacionRequerido,
+          tiempoRequeridoAccProgramadas: item.tiempoRequeridoAccProgramadas,
+          costoTotalMant: item.costoTotalMant,
+          facturacion: item.facturacion,
+          costoMantContratado: item.costoMantContratado,
+          perdidaIndisponibilidad: item.perdidaIndisponibilidad
+        }));
+        setData(transformedData);
+      } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
@@ -115,62 +61,67 @@ const filtrarLista = async () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Equipo", width: 90 },
+    { field: "id", headerName: "Equipo", width: 200 },
     {
-        field: "fechaId",
-        headerName: "Fecha",
-        width: 200
+      field: "fechaId",
+      headerName: "Fecha",
+      width: 200
     },
     {
         field: "tiempoRealParoFalla",
-        headerName: "trpf",
+        headerName: "tiempoRealParoFalla",
         width: 200
-    },
-    {
+      },
+      {
         field: "tiempoRealMant",
-        headerName: "trm",
+        headerName: "tiempoRealMant",
         width: 200
-    },
-    {
-        field: "tiempoOPeracionReal",
-        headerName: "tor",
-        width: 200
-    },
-    {
-        field: "tiempoParoTrabajosPlan",
-        headerName: "tptp",
-        width: 200
-    },
-    {
-        field: "tiempoParoMant",
-        headerName: "ttpm",
-        width: 200
-    },
-    {
-        field: "tiempoOperacionRequerido",
-        headerName: "tor",
-        width: 200
-    },
-    {
-        field: "tiempoRequeridoAccProgramadas",
-        headerName: "trap",
-        width: 200
-    },
-    {
-        field: "costoTotalMant",
-        headerName: "ctm",
-        width: 200
-    },
-    {
-        field: "facturacion",
-        headerName: "fact",
-        width: 200
-    },
-    {
-        field: "costoMantContratado",
-        headerName: "cmc",
-        width: 200
-    },
+      },
+      {
+          field: "tiempoOPeracionReal",
+          headerName: "tiempoOPeracionReal",
+          width: 200
+        },
+        {
+            field: "tiempoParoTrabajosPlan",
+            headerName: "tiempoParoTrabajosPlan",
+            width: 200
+          },
+          {
+              field: "tiempoParoMant",
+              headerName: "tiempoParoMant",
+              width: 200
+            },
+            {
+                field: "tiempoOperacionRequerido",
+                headerName: "tiempoOperacionRequerido",
+                width: 200
+              },
+              {
+                  field: "tiempoRequeridoAccProgramadas",
+                  headerName: "tiempoRequeridoAccProgramadas",
+                  width: 200
+                },
+                {
+                    field: "costoTotalMant",
+                    headerName: "costoTotalMant",
+                    width: 200
+                  },
+                  {
+                      field: "facturacion",
+                      headerName: "facturacion",
+                      width: 200
+                    },
+                    {
+                        field: "costoMantContratado",
+                        headerName: "costoMantContratado",
+                        width: 200
+                      },
+                      {
+                          field: "perdidaIndisponibilidad",
+                          headerName: "perdidaIndisponibilidad",
+                          width: 200
+                        },
     {
       field: "action",
       headerName: "Action",
@@ -178,11 +129,11 @@ const filtrarLista = async () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/herramientas/" + params.row.id}>
-              <button className="herramientasEdit">Edit</button>
+            <Link to={"/reporte/" + params.row.id}>
+              <button className="reporteEdit">Edit</button>
             </Link>
             <DeleteOutline
-              className="herramientasDelete"
+              className="reporteDelete"
               onClick={() => handleDelete(params.row.id)}
             />
           </>
@@ -192,56 +143,14 @@ const filtrarLista = async () => {
   ];
 
   return (
-   
-    <div className="herramientas">
-        <form className="newReporteForm" onSubmit={filtrarLista}>
-        <div className="newReporteItem">
-        <label>Equipo</label>
-        <select placeholder="Selecciona un equipo" value={equipoId} onChange={(e) => setEquipoId(e.target.value)}>
-            {Equipos.map((equipo) => (
-            <option key={equipo.equipoId} value={equipo.equipoId}>
-                {equipo.equipoId}
-            </option>
-            ))}
-        </select>
-        
-        <label>Día</label>
-        <select placeholder="Selecciona un día" value={fechaSeleccionada.dia} onChange={(e) => handleChange(e, 'dia')}>
-            {dias.map((dia) => (
-            <option key={dia} value={dia}>
-                {dia}
-            </option>
-            ))}
-        </select>
-        
-        <label>Mes</label>
-        <select placeholder="Selecciona un mes" value={fechaSeleccionada.mes} onChange={(e) => handleChange(e, 'mes')}>
-            {meses.map((mes) => (
-            <option key={mes} value={mes}>
-                {mes || 'Vacío'}
-            </option>
-            ))}
-        </select>
-
-        <label>Año</label>
-        <select placeholder="Selecciona un año" value={fechaSeleccionada.ano} onChange={(e) => handleChange(e, 'ano')}>
-            {anos.map((ano) => (
-            <option key={ano} value={ano}>
-                {ano || 'Vacío'}
-            </option>
-            ))}
-        </select>
-        </div>
-        <button type="submit" className="tableAddButton" onClick={filtrarLista}>Filtrar</button>
-      </form>
-
-        
-
-         
+    <div className="reporte">
       <div className="tableTitleContainer">
-        <h1 className="tableTitle">Reporte</h1>
-
+        <h1 className="tableTitle">Reportes</h1>
+        <Link to="/reporte-create">
+          <button className="tableAddButton">Create</button>
+        </Link>
       </div>
+
       <DataGrid
         rows={data}
         disableSelectionOnClick
@@ -253,4 +162,4 @@ const filtrarLista = async () => {
   );
 }
 
-export default Herramientas;
+export default Reporte;

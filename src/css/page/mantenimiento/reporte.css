@@ -1,43 +1,10 @@
-.newReporteForm {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .newReporteItem {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    margin-right: 20px;
-  }
-  
-  .newReporteItem > label {
-    margin-bottom: 10px;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgb(151, 150, 150);
-  }
-  
-  .newReporteItem > input {
-    width: 40%;
-    padding: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    resize: vertical; /* Allows vertical resizing */
-  }
-  
-  .newReporteItem > select {
-    width: 40%;
-    padding: 10px;
-    border: 1px solid gray;
-    border-radius: 5px;
-  }
-  .equipo{
+.reporte{
     flex: 4;
     top: 50px;
+    width: 78%;
 }
 
-.equipoEdit{
+.reporteEdit{
     border: none;
     border-radius: 10px;
     padding: 5px 10px;
@@ -47,7 +14,7 @@
     margin-right: 20px;
 }
 
-.equipoDelete{
+.reporteDelete{
     color: red;
     cursor: pointer;
 }

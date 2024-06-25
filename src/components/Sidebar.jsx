@@ -60,6 +60,20 @@ function Sidebar() {
                 </li>
               </Link>
 
+              <Link to="/reporte" className="link">
+                <li className={`sidebarListItem ${currentPath === '/reporte' ? 'active' : ''}`}>
+                  <LineStyle className="sidebarIcon" />
+                  Reporte
+                </li>
+              </Link>
+
+              <Link to="/resumen-parametros" className="link">
+                <li className={`sidebarListItem ${currentPath === '/resumen-parametros' ? 'active' : ''}`}>
+                  <LineStyle className="sidebarIcon" />
+                  Resumen Parametros
+                </li>
+              </Link>
+
               <Link to="/accion-mantenimiento" className="link">
                 <li className={`sidebarListItem ${currentPath === '/accion-mantenimiento' ? 'active' : ''}`}>
                   <LineStyle className="sidebarIcon" />
@@ -88,10 +102,10 @@ function Sidebar() {
                 </li>
               </Link>
 
-              <Link to="/reporte" className="link">
-                <li className={`sidebarListItem ${currentPath === '/reporte' ? 'active' : ''}`}>
+              <Link to="/resumen-parametros" className="link">
+                <li className={`sidebarListItem ${currentPath === '/resumen-parametros' ? 'active' : ''}`}>
                   <LineStyle className="sidebarIcon" />
-                  Reporte
+                  ResumenParametros
                 </li>
               </Link>
 
@@ -183,6 +197,20 @@ function Sidebar() {
                 <li className={`sidebarListItem ${currentPath === '/venta' ? 'active' : ''}`}>
                   <Storefront className="sidebarIcon" />
                   Venta
+                </li>
+              </Link>
+
+              <Link to="/medicion-bascula" className="link">
+                <li className={`sidebarListItem ${currentPath === '/medicion-bascula' ? 'active' : ''}`}>
+                  <Storefront className="sidebarIcon" />
+                  Medicion Bascula
+                </li>
+              </Link>
+
+              <Link to="/medicion-silo" className="link">
+                <li className={`sidebarListItem ${currentPath === '/medicion-silo' ? 'active' : ''}`}>
+                  <Storefront className="sidebarIcon" />
+                  Medicion Silo
                 </li>
               </Link>
 

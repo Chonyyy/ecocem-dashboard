@@ -17,6 +17,8 @@ import Login from './components/Login';
 
 //Mantenimiento
 
+import Reporte from './pages/mantenimiento/Reporte';
+import ReporteCreate from './pages/mantenimiento/ReporteCreate';
 import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
 import AccionMantenimientoCreate from './pages/mantenimiento/AccionMantenimientoCreate';
 import Equipo from './pages/mantenimiento/Equipo';
@@ -25,7 +27,7 @@ import Herramientas from './pages/mantenimiento/Herramientas';
 import HerramientasCreate from './pages/mantenimiento/HerramientasCreate';
 import OrdenTrabajo from './pages/mantenimiento/OrdenTrabajo';
 import OrdenTrabajoCreate from './pages/mantenimiento/OrdenTrabajoCreate';
-import Reporte from './pages/mantenimiento/Reporte';
+import ResumenParametros from './pages/mantenimiento/ResumenParametros';
 import RoturaEquipo from './pages/mantenimiento/RoturaEquipo';
 import RoturaEquipoCreate from './pages/mantenimiento/RoturaEquipoCreate';
 import TipoRotura from './pages/mantenimiento/TipoRotura';
@@ -53,6 +55,10 @@ import Vehiculo from './pages/peso/Vehiculo';
 import VehiculoCreate from './pages/peso/VehiculoCreate';
 import Venta from './pages/peso/Venta';
 import VentaCreate from './pages/peso/VentaCreate';
+import MedicionBascula from './pages/peso/MedicionBascula';
+import MedicionSilo from './pages/peso/MedicionSilo';
+import MedicionBasculaCreate from './pages/peso/MedicionBasculaCreate';
+import MedicionSiloCreate from './pages/peso/MedicionSiloCreate';
 
 //Administracion
 import Brigada from './pages/administracion/Brigada';
@@ -84,6 +90,8 @@ function App() {
                 <Sidebar />
                 <Routes>
                   {/* Mantenimiento */}
+                  <Route path='/reporte' element={<ProtectedRoute element={Reporte} />} />
+                  <Route path='/reporte-create' element={<ProtectedRoute element={ReporteCreate} />} />
                   <Route path='/accion-mantenimiento' element={<ProtectedRoute element={AccionMantenimiento} />} />
                   <Route path='/accion-mantenimiento-create' element={<ProtectedRoute element={AccionMantenimientoCreate} />} />
                   <Route path='/equipo' element={<ProtectedRoute element={Equipo} />} />
@@ -92,7 +100,7 @@ function App() {
                   <Route path='/herramientas-create' element={<ProtectedRoute element={HerramientasCreate} />} />
                   <Route path='/orden-trabajo' element={<ProtectedRoute element={OrdenTrabajo} />} />
                   <Route path='/orden-trabajo-create' element={<ProtectedRoute element={OrdenTrabajoCreate} />} />
-                  <Route path='/reporte' element={<ProtectedRoute element={Reporte} />} />
+                  <Route path='/resumen-parametros' element={<ProtectedRoute element={ResumenParametros} />} />
                   <Route path='/rotura-equipo' element={<ProtectedRoute element={RoturaEquipo} />} />
                   <Route path='/rotura-equipo-create' element={<ProtectedRoute element={RoturaEquipoCreate} />} />
                   <Route path='/tipo-rotura' element={<ProtectedRoute element={TipoRotura} />} />
@@ -120,7 +128,12 @@ function App() {
                   <Route path='/vehiculo-create' element={<ProtectedRoute element={VehiculoCreate} />} />
                   <Route path='/venta' element={<ProtectedRoute element={Venta} />} />
                   <Route path='/venta-create' element={<ProtectedRoute element={VentaCreate} />} />
+                  <Route path='/medicion-bascula' element={<ProtectedRoute element={MedicionBascula} />} />
+                  <Route path='/medicion-bascula-create' element={<ProtectedRoute element={MedicionBasculaCreate} />} />
+                  <Route path='/medicion-silo' element={<ProtectedRoute element={MedicionSilo} />} />
+                  <Route path='/medicion-silo-create' element={<ProtectedRoute element={MedicionSiloCreate} />} />
                   
+
                   {/* Administracion */}
                   <Route path='/brigada' element={<ProtectedRoute element={Brigada} />} />
                   <Route path='/brigada-create' element={<ProtectedRoute element={BrigadaCreate} />} />
