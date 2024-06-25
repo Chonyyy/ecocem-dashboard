@@ -9,10 +9,23 @@ import { useNavigate } from 'react-router-dom';
 
 function Carga() {
   const [data, setData] = useState([]);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [administrator, setAdministrator] = useState(false);//TODO: implement changes for admins
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        if (await checkAuth()) {
+          setAuthenticated(true);
+          if (await checkAdmin()) {
+            setAdministrator(true);
+          }
+        }
+        else {
+          navigate('/login')
+        }
+
         const response = await axios.get('/Carga'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
@@ -37,6 +50,10 @@ function Carga() {
 
     fetchData();
   }, []);
+
+  if (!authenticated) {
+    return <div>Loading...</div>;//TODO: modify this component so it looks better
+  }
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));

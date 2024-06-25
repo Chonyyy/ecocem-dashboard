@@ -40,7 +40,7 @@ function Equipo() {
     };
 
     fetchData();
-  }, [navigate]);
+  }, []);
 
   if (!authenticated) {
     return <div>Loading...</div>;//TODO: modify this component so it looks better
@@ -96,7 +96,7 @@ function Equipo() {
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
-        checkboxSelection
+        // checkboxSelection
       />
     </div>
   );

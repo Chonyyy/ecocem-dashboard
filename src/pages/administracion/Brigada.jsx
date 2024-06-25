@@ -39,7 +39,7 @@ function Brigada() {
     };
 
     fetchData();
-  }, [navigate]);
+  }, []);
 
   if (!authenticated) {
     return <div>Loading...</div>;//TODO: modify this component so it looks better

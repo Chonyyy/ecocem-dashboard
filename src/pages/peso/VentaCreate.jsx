@@ -70,7 +70,7 @@ function VentaCreate() {
         ))}
         </select>
 
-        <label>Sede</label>
+        <label>Entidad Compradora</label>
         <select
           value={entidadCompradoraId}
           onChange={(e) => setEntidadCompradoraId(e.target.value)}

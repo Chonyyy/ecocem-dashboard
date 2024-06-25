@@ -31,7 +31,7 @@ function Bascula() {
         const transformedData = response.data.map(item => ({
           id: item.basculaId,
           noSerie: item.noSerie,
-          noSede: item.noSede,
+          nombreSede: item.nombreSede,
           descripcion: item.descripcion
         }));
         setData(transformedData);
@@ -41,7 +41,7 @@ function Bascula() {
     };
 
     fetchData();
-  }, [navigate]);
+  }, []);
 
   if (!authenticated) {
     return <div>Loading...</div>;//TODO: modify this component so it looks better
@@ -59,7 +59,7 @@ function Bascula() {
       width: 200
     },
     {
-        field: "noSede",
+        field: "nombreSede",
         headerName: "Sede del bascula",
         width: 200
       },

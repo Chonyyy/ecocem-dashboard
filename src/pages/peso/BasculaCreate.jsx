@@ -25,7 +25,7 @@ function BasculaCreate() {
       axios.post(`/Bascula`, {
           basculaId: basculaId,
           noSerie: numeroBascula,
-          sedeId:noSede,
+          noSede:noSede,
           descripcion:descripcion
       })
       .then((response) => {
