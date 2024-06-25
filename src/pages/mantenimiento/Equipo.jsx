@@ -30,8 +30,8 @@ function Equipo() {
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
           id: item.equipoId,
-          tipoEId: item.tipoEId,
-          sedeId: item.sedeId
+          tipoEId: item.tipoEquipoNombre,
+          sedeId: item.sedeNombre
         }));
         setData(transformedData);
       } catch (error) {
