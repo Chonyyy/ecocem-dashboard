@@ -50,7 +50,7 @@ function EntidadCompradora() {
   };
 
   const columns = [
-    { field: "entidadCompradoraId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
       field: "nombreEntidadCompradora",
       headerName: "Nombre",

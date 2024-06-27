@@ -32,7 +32,7 @@ function Sede() {
           id: item.sedeId,
           nombreSede: item.nombreSede,
           ubicacionSede: item.ubicacionSede,
-          empresaId: item.empresaId
+          empresaId: item.nombreEmpresa
         }));
         setData(transformedData);
       } catch (error) {

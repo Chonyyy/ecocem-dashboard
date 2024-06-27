@@ -15,6 +15,8 @@ function CargaCreate({ sedeId, entidadCompradoraId, fechaVentaId, onClose }) {
   const [volumen, setVolumen] = useState(1);
   const [fechaId, setFecha] = useState(new Date());
   const [searchParams] = useSearchParams();
+  const [tara, setTara] = useState(1);
+  const [pesoBruto, setPesoBruto] = useState(1);
 
   //Lista de tipoCementos
   const [tipoCementos, setTipoCementos] = useState([]);
@@ -79,21 +81,23 @@ function CargaCreate({ sedeId, entidadCompradoraId, fechaVentaId, onClose }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // TODO: Get Sede entidad and fecha from venta (query parameters)
+      // TODO: Get Sede entidad and fecha from venta (query parameters) Also show the selection as static information 
       const newEntry = {
         tipoCementoId: tipoCementoId,
         siloId: siloId,
         vehiculoId: vehiculoId,
-        fechaId: fecha,//
+        fechaId: fecha,
         medidorId: medidorId,
         nivel: nivel,
         pesoM: pesoMedidor,
         volumen: volumen,
         basculaId: basculaId,
         pesoB: pesoBascula,
-        sedeId: sede,//
-        entidadCompradoraId: entidad,//
-        fechaVentaId: fechaVentaId
+        sedeId: sede,
+        entidadCompradoraId: entidad,
+        fechaVentaId: fechaVentaId,
+        tara: tara,
+        pesoBruto: pesoBruto
       };
       const response = await axios.post('/Carga', newEntry);
       if (response.status === 200) {
@@ -201,6 +205,20 @@ function CargaCreate({ sedeId, entidadCompradoraId, fechaVentaId, onClose }) {
             width={80}
             backgroundColor="white"
 
+          />
+
+          <label>Tara</label>
+          <input
+            value={tara}
+            placeholder="Ingrese el valor de la tara"
+            onChange={(e) => setTara(e.target.value)}
+          />
+
+          <label>Peso Bruto</label>
+          <input
+            value={pesoBruto}
+            placeholder="Ingrese el Peso Bruto"
+            onChange={(e) => setPesoBruto(e.target.value)}
           />
 
 

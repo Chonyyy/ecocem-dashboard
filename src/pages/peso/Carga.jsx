@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { checkAuth, checkAdmin } from '../../scripts/auth';
 import { useNavigate } from 'react-router-dom';
-
+//TODO: Get the carga id from backend once implemented
 function Carga() {
   const [data, setData] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
@@ -67,55 +67,55 @@ function Carga() {
       width: 200
     },
     {
-        field: "vehiculoId",
-        headerName: "ID del vehiculo",
-        width: 200
-      },
-      {
-        field: "fechaId",
-        headerName: "Fecha",
-        width: 200
-      },
-      {
-          field: "pesoBruto",
-          headerName: "Peso Bruto",
-          width: 200
-        },
-        {
-          field: "tara",
-          headerName: "Tara",
-          width: 200
-        },
-        {
-            field: "medidorId",
-            headerName: "ID del medidor",
-            width: 200
-          },
-          {
-            field: "nivel",
-            headerName: "Nivel",
-            width: 200
-          },
-          {
-              field: "pesoM",
-              headerName: "PesoM",
-              width: 200
-            },
-            {
-              field: "volumen",
-              headerName: "Volumen",
-              width: 200
-            },
-            {
-                field: "basculaId",
-                headerName: "ID de la bascula",
-                width: 200
-              },
-              {
-                field: "pesoB",
-                headerName: "pesoB",
-                width: 200
-              },
+      field: "vehiculoId",
+      headerName: "ID del vehiculo",
+      width: 200
+    },
+    {
+      field: "fechaId",
+      headerName: "Fecha",
+      width: 200
+    },
+    {
+      field: "pesoBruto",
+      headerName: "Peso Bruto",
+      width: 200
+    },
+    {
+      field: "tara",
+      headerName: "Tara",
+      width: 200
+    },
+    {
+      field: "medidorId",
+      headerName: "ID del medidor",
+      width: 200
+    },
+    {
+      field: "nivel",
+      headerName: "Nivel",
+      width: 200
+    },
+    {
+      field: "pesoM",
+      headerName: "PesoM",
+      width: 200
+    },
+    {
+      field: "volumen",
+      headerName: "Volumen",
+      width: 200
+    },
+    {
+      field: "basculaId",
+      headerName: "ID de la bascula",
+      width: 200
+    },
+    {
+      field: "pesoB",
+      headerName: "pesoB",
+      width: 200
+    },
     {
       field: "action",
       headerName: "Action",

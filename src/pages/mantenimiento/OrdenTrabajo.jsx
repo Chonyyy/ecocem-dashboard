@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { checkAuth, checkAdmin } from '../../scripts/auth';
-
+//Get Relation Id from backend
 function OrdenTrabajo() {
   const [data, setData] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
@@ -29,13 +29,14 @@ function OrdenTrabajo() {
         const response = await axios.get('/OrdenTrabajo'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-            equipoId: item.equipoId,
-            brigadaId: item.brigadaId,
-            trabajadorId: item.trabajadorId,
-            fechaId: item.fechaId
-          }));
-          setData(transformedData);
-    } catch (error) {
+          id: item.ordenTrabajoId,
+          equipoId: item.equipoId,
+          brigadaId: item.brigadaId,
+          trabajadorId: item.trabajadorId,
+          fechaId: new Date(item.fechaId) // Ensure fechaId is a Date object
+        }));
+        setData(transformedData);
+      } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
@@ -51,25 +52,37 @@ function OrdenTrabajo() {
     setData(data.filter((item) => item.id !== id));
   };
 
+  const handleCreateTool = () => {
+
+  };
+
   const columns = [
-    {   field: "equipoId", 
-        headerName: "equipoId", 
-        width: 200 },
     {
-        field: "brigadaId",
-        headerName: "brigadaId",
-        width: 200
+      field: "id",
+      headerName: "Id",
+      width: 200
     },
     {
-        field: "trabajadorId",
-        headerName: "trabajadorId",
-        width: 200
+      field: "equipoId",
+      headerName: "equipoId",
+      width: 200
     },
     {
-        field: "fechaId",
-        headerName: "fechaId",
-        type: 'dateTime',
-        width: 200
+      field: "brigadaId",
+      headerName: "brigadaId",
+      width: 200
+    },
+    {
+      field: "trabajadorId",
+      headerName: "trabajadorId",
+      width: 200
+    },
+    {
+      field: "fechaId",
+      headerName: "fechaId",
+      type: 'dateTime',
+      width: 200,
+      valueGetter: (params) => new Date(params.value)
     },
     {
       field: "action",
@@ -85,6 +98,20 @@ function OrdenTrabajo() {
               className="ordenTrabajoDelete"
               onClick={() => handleDelete(params.row.id)}
             />
+          </>
+        );
+      },
+    },
+    {
+      field: "create-tool",
+      headerName: "Utilizar Herramienta",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+          <Link to={"/carga-create?sede=" + params.row.id + "&entidad=" + params.row.entidadCompradoraId + "&fecha=" + params.row.fechaId}>
+            <button className="ventaEdit">Crear Carga</button>
+          </Link>
           </>
         );
       },

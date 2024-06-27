@@ -31,7 +31,7 @@ function Venta() {
         const transformedData = response.data.map(item => ({
           id: item.sedeId,
           entidadCompradoraId: item.entidadCompradoraId,
-          fechaId: item.fechaId
+          fechaId: item.fechaVentaId
         }));
         setData(transformedData);
       } catch (error) {
@@ -77,9 +77,20 @@ function Venta() {
               className="ventaDelete"
               onClick={() => handleDelete(params.row.id)}
             />
-            <Link to={"/carga-create?sede=" + params.row.id + "&entidad=" + params.row.entidadCompradoraId + "&fecha=" + params.row.fechaId}>
-              <button className="ventaEdit">Crear Carga</button>
-            </Link>
+          </>
+        );
+      },
+    },
+    {
+      field: "create-carga",
+      headerName: "Crear Carga",
+      width: 150,
+      renderCell: (params) => {
+        return (
+          <>
+          <Link to={"/carga-create?sede=" + params.row.id + "&entidad=" + params.row.entidadCompradoraId + "&fecha=" + params.row.fechaId}>
+            <button className="ventaEdit">Crear Carga</button>
+          </Link>
           </>
         );
       },

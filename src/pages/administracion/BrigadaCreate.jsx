@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function BrigadaCreate() {
-    const [descripcion, setDescripcion] = useState("");
+  const [descripcion, setDescripcion] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,8 +28,6 @@ function BrigadaCreate() {
       <h1 className="newBrigadaTitle">Crear Brigada</h1>
       <form className="newBrigadaForm" onSubmit={handleSubmit}>
         <div className="newBrigadaItem">
-        <label>Número de Serie de Brigada</label>
-
           <label>Descripción</label>
           <textarea
             placeholder="Descripción"

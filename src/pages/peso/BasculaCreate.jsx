@@ -42,7 +42,7 @@ function BasculaCreate() {
       const newEntry = {
         basculaId: basculaId,
         noSerie: numeroBascula,
-        sedeId:noSede,
+        noSede:noSede,
         descripcion:descripcion
       };
       const response = await axios.post('/Bascula', newEntry);

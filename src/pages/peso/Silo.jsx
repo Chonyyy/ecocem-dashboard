@@ -31,7 +31,7 @@ function Silo() {
         const transformedData = response.data.map(item => ({
           id: item.siloId,
           noSilo: item.noSilo,
-          noSede: item.noSede,
+          noSede: item.nombreSede,
           radio: item.radio,
           altura: item.altura
         }));
@@ -53,7 +53,7 @@ function Silo() {
   };
 
   const columns = [
-    { field: "siloId", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90 },
     {
       field: "noSilo",
       headerName: "noSilo",
