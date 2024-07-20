@@ -3,6 +3,7 @@ import '../css/component/topbar.css';
 import { checkAdmin } from '../scripts/auth';
 import { NotificationsNone, Language, Settings } from "@mui/icons-material";
 import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
 function Topbar() {
@@ -14,7 +15,7 @@ function Topbar() {
   const notify = () => {
     if (!hasShownNotifications.current) {
       notifications.forEach(notification => {
-        toast(notification.message); // Assuming each notification has a `message` field
+        toast(notification.message, { autoClose: 10000 });
       });
       hasShownNotifications.current = true;
     }
@@ -41,7 +42,7 @@ function Topbar() {
       }
       hasShownNotifications.current = false; // Reset shown notifications status after fetching new data
     } catch (error) {
-      toast.error("Error de red");
+      toast.error("Error de red", { autoClose: 5000 }); // Close after 5 seconds
       setNotifications([]); // In case of error, ensure it's still an array
     }
   };
@@ -55,7 +56,7 @@ function Topbar() {
         <div className="topRight">
           <div className="topbarIconContainer" onClick={notify}>
             <NotificationsNone />
-            <ToastContainer />
+            <ToastContainer autoClose={5000} /> {/* Close after 5 seconds */}
             <span className="topIconBadge">{notifications.length}</span>
           </div>
           <div className="topbarIconContainer">
