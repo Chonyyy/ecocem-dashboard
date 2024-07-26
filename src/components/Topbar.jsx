@@ -14,6 +14,7 @@ function Topbar() {
   // Notify function that displays all notifications
   const notify = () => {
     if (!hasShownNotifications.current) {
+      fetchNotification();
       notifications.forEach(notification => {
         toast(notification.message, { autoClose: 10000 });
       });
@@ -33,7 +34,7 @@ function Topbar() {
 
   const fetchNotification = async () => {
     try {
-      const response = await axios.get('http://localhost:5103/api/Notification');
+      const response = await axios.get('/Notification');
       const data = response.data;
       if (Array.isArray(data)) {
         setNotifications(data); // Store notifications in state

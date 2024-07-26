@@ -16,7 +16,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './components/Login';
 
 //Mantenimiento
-
+import ResumenParametros from './pages/mantenimiento/ResumenParametros';
 import Reporte from './pages/mantenimiento/Reporte';
 import ReporteCreate from './pages/mantenimiento/ReporteCreate';
 import AccionMantenimiento from './pages/mantenimiento/AccionMantenimiento';
@@ -27,7 +27,6 @@ import Herramientas from './pages/mantenimiento/Herramientas';
 import HerramientasCreate from './pages/mantenimiento/HerramientasCreate';
 import OrdenTrabajo from './pages/mantenimiento/OrdenTrabajo';
 import OrdenTrabajoCreate from './pages/mantenimiento/OrdenTrabajoCreate';
-import ResumenParametros from './pages/mantenimiento/ResumenParametros';
 import RoturaEquipo from './pages/mantenimiento/RoturaEquipo';
 import RoturaEquipoCreate from './pages/mantenimiento/RoturaEquipoCreate';
 import TipoRotura from './pages/mantenimiento/TipoRotura';

@@ -10,7 +10,7 @@ function SedeCreate() {
     const [empresas, setEmpresas] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5103/api/Empresa`)
+        axios.get(`/Empresa`)
           .then(res => {
             setEmpresas(res.data);
           })

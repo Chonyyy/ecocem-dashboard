@@ -14,7 +14,7 @@ function MedicionBasculaCreate() {
         const [vehiculos, setVehiculos] = useState([]);
     
         useEffect(() => {
-          axios.get(`http://localhost:5103/api/Vehiculo`)
+          axios.get(`/Vehiculo`)
             .then(res => {
               setVehiculos(res.data);
             })
@@ -26,7 +26,7 @@ function MedicionBasculaCreate() {
         const [basculas, setBasculas] = useState([]);
     
         useEffect(() => {
-          axios.get(`http://localhost:5103/api/Bascula`)
+          axios.get(`/Bascula`)
             .then(res => {
               setBasculas(res.data);
             })

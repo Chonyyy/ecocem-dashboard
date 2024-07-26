@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { checkAuth, checkAdmin } from '../../scripts/auth';
-import { Box } from '@mui/material';
 
-function Herramientas() {
+function ResumenParametros() {
   const [data, setData] = useState([]);
   const [authenticated, setAuthenticated] = useState(false);
   const [administrator, setAdministrator] = useState(false);
@@ -20,13 +19,13 @@ function Herramientas() {
     ano: '',
   });
   
-  const [resumenParametross, setResumenParametross] = useState([]);
+  // const [resumenParametross, setResumenParametross] = useState([]);
 
     //Lista de equipos
     const [Equipos, setEquipos] = useState([]);
   
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/Equipo`)
+      axios.get(`/Equipo`)
         .then(res => {
           setEquipos(res.data);
         })
@@ -51,8 +50,9 @@ const handleChange = (e, tipo) => {
 
 
 const filtrarLista = async () => {
+  console.log("aaaaaaaaaaaaaaaaaa")
     try {
-      const response = await axios.get('/Reporte',{
+      const response = await axios.get('/FiltroMantenimiento/GetReportes',{
         params: {
             dia: fechaSeleccionada.dia,
             mes: fechaSeleccionada.mes,
@@ -60,6 +60,7 @@ const filtrarLista = async () => {
             equipoId: equipoId,
           },
       });
+      console.log(response.data)
       const transformedData = response.data.map(item => ({
         id: item.equipoId,
         fechaId: item.fechaId,
@@ -72,16 +73,16 @@ const filtrarLista = async () => {
         tiempoRequeridoAccProgramadas: item.tiempoRequeridoAccProgramadas,
         costoTotalMant: item.costoTotalMant,
         facturacion: item.facturacion,
-        tiempoRealParoFalla: item.tiempoRealParoFalla,
-      }));
+        costoMantContratado: item.costoMantContratado,
+      })
+    );
       setData(transformedData);
-      setResumenParametross(response.data);
+      // setResumenParametross(response.data);
+      console.log('hola')
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-
-
 
 
   useEffect(() => {
@@ -175,19 +176,19 @@ const filtrarLista = async () => {
       field: "action",
       headerName: "Action",
       width: 150,
-      renderCell: (params) => {
-        return (
-          <>
-            <Link to={"/herramientas/" + params.row.id}>
-              <button className="herramientasEdit">Edit</button>
-            </Link>
-            <DeleteOutline
-              className="herramientasDelete"
-              onClick={() => handleDelete(params.row.id)}
-            />
-          </>
-        );
-      },
+      // renderCell: (params) => {
+      //   return (
+      //     <>
+      //       <Link to={"/resumen-parametros/" + params.row.id}>
+      //         <button className="resumenParametrosEdit">Edit</button>
+      //       </Link>
+      //       <DeleteOutline
+      //         className="resumenParametrosDelete"
+      //         onClick={() => handleDelete(params.row.id)}
+      //       />
+      //     </>
+      //   );
+      // },
     },
   ];
 
@@ -253,4 +254,4 @@ const filtrarLista = async () => {
   );
 }
 
-export default Herramientas;
+export default ResumenParametros;

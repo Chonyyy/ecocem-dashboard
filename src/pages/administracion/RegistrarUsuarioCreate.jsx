@@ -16,7 +16,7 @@ function EmpresaCreate() {
       const roles = ["admin", "jefe"]
 
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Sede`)
+    axios.get(`/Sede`)
       .then(res => {
         setSedes(res.data);
       })

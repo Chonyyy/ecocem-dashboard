@@ -16,7 +16,7 @@ function MedicionSiloCreate() {
   const [silos, setSilos] = useState([]);
   
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/Silo`)
+    axios.get(`/Silo`)
       .then(res => {
         setSilos(res.data);
       })
@@ -27,7 +27,7 @@ function MedicionSiloCreate() {
       const [medidores, setMedidores] = useState([]);
 
       useEffect(() => {
-        axios.get(`http://localhost:5103/api/Medidor`)
+        axios.get(`/Medidor`)
           .then(res => {
             setMedidores(res.data);
           })

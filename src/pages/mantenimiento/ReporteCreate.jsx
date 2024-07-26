@@ -1,46 +1,48 @@
 import '../../css/page/mantenimiento/reporteCreate.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
 
 function ReporteCreate() {
-    const [equipoId, setEquipoId] = useState(1);
-    const [fechaId, setFecha] = useState(new Date());
-    const [tiempoRealParoFalla, setTiempoRealParoFalla] = useState(1); //Tiempo real de paro por falla, en horas.
-    const [tiempoRealMant, setTiempoRealMant] = useState(1); //Tiempo de operación real en horas.
-    const [tiempoOperacionReal, setTiempoOperacionReal] = useState(1); //Disponibilidad Real.
-    const [tiempoParoTrabajosPlan, setTiempoParoTrabajosPlan] = useState(1); //Tiempo de paro por ejecución de trabjos planificados.
-    const [tiempoParoMant, setTiempoParoMant] = useState(1); //Tiempo real de paro por mtto. Contempla intervenciones planificadas más imprevistas en horas tdm=Σtmp + Σtr. (tdm) 
-    const [tiempoOperacionRequerido, setTiempoOperacionRequerido] = useState(1); //Tiempo de operación requerido según programa de producción en horas.
-    const [tiempoRequeridoAccProgramadas, setTiempoRequeridoAccProgramadas] = useState(1); //Tiempo requerido para las intervenciones programadas  de mtto en horas.
-    const [costoTotalMant, setCostoTotalMant] = useState(1); //Costo total de mantenimiento.
-    const [facturacion, setFacturacion] = useState(1); //Facturación de la empresa en el periodo analizado.
-    const [costoMantContratado, setCostoMantContratado] = useState(1); //Costo de los mttos contratados.
-    //temporal en verdad esto es un indicdor
-    const [perdidaIndisponibilidad, setPerdidaIndisponibilidad]=useState(1);//PerdidaIndisponibilidad
-    const [horasTotal, setHorasTotal] = useState([]); //horas total del equipo para mantenimiento
-  
-    
-    //Lista de equipos
-    const [equipos, setEquipos] = useState([]);
-    useEffect(() => {
-        axios.get(`http://localhost:5103/api/Equipo`)
-        .then(res => {
-            setEquipos(res.data);
-        })
-        .catch(err => console.log(err));
-    }, []);
-    
-    const [equiposPorTE, setEquiposPorTE] = useState([]);
-    useEffect(() => {
-      axios.get(`/TipoEquipo`)
-        .then(res => {
-            setEquiposPorTE(res.data);
-        })
-        .catch(err => console.log(err));
-    }, []);
+  const [equipoId, setEquipoId] = useState(1);
+  const [fechaId, setFecha] = useState(new Date());
+  const [tiempoRealParoFalla, setTiempoRealParoFalla] = useState(1); //Tiempo real de paro por falla, en horas.
+  const [tiempoRealMant, setTiempoRealMant] = useState(1); //Tiempo de operación real en horas.
+  const [tiempoOperacionReal, setTiempoOperacionReal] = useState(1); //Disponibilidad Real.
+  const [tiempoParoTrabajosPlan, setTiempoParoTrabajosPlan] = useState(1); //Tiempo de paro por ejecución de trabjos planificados.
+  const [tiempoParoMant, setTiempoParoMant] = useState(1); //Tiempo real de paro por mtto. Contempla intervenciones planificadas más imprevistas en horas tdm=Σtmp + Σtr. (tdm) 
+  const [tiempoOperacionRequerido, setTiempoOperacionRequerido] = useState(1); //Tiempo de operación requerido según programa de producción en horas.
+  const [tiempoRequeridoAccProgramadas, setTiempoRequeridoAccProgramadas] = useState(1); //Tiempo requerido para las intervenciones programadas  de mtto en horas.
+  const [costoTotalMant, setCostoTotalMant] = useState(1); //Costo total de mantenimiento.
+  const [facturacion, setFacturacion] = useState(1); //Facturación de la empresa en el periodo analizado.
+  const [costoMantContratado, setCostoMantContratado] = useState(1); //Costo de los mttos contratados.
+  //temporal en verdad esto es un indicdor
+  const [perdidaIndisponibilidad, setPerdidaIndisponibilidad] = useState(1);//PerdidaIndisponibilidad
+  const [horasTotal, setHorasTotal] = useState(0); //horas total del equipo para mantenimiento
 
-//Lista de sedes
+
+  //Lista de equipos
+  const [equipos, setEquipos] = useState([]);
+  useEffect(() => {
+    axios.get(`/Equipo`)
+      .then(res => {
+        setEquipos(res.data);
+      })
+      .catch(err => console.log(err));
+
+  }, []);
+
+  const [equiposPorTE, setEquiposPorTE] = useState([]);
+  useEffect(() => {
+    axios.get(`/TipoEquipo`)
+      .then(res => {
+        setEquiposPorTE(res.data);
+      })
+      .catch(err => console.log(err));
+
+
+  }, []);
+
+  //Lista de sedes
   const [sedes, setSedes] = useState([]);
   useEffect(() => {
     axios.get(`/Sede`)
@@ -52,20 +54,21 @@ function ReporteCreate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const newEntry = {
-        equipoId : equipoId,
+        equipoId: equipoId,
         fechaId: fechaId,
         tiempoRealParoFalla: tiempoRealParoFalla,
         tiempoRealMant: tiempoRealMant,
         tiempoOperacionReal: tiempoOperacionReal,
-        tiempoParoTrabajosPlan:tiempoParoTrabajosPlan,
+        tiempoParoTrabajosPlan: tiempoParoTrabajosPlan,
         tiempoParoMant: tiempoParoMant,
-        tiempoOperacionRequerido:tiempoOperacionRequerido,
-        tiempoRequeridoAccProgramadas:tiempoRequeridoAccProgramadas,
-        costoTotalMant:costoTotalMant,
-        facturacion:facturacion,
-        costoMantContratado:costoMantContratado,
+        tiempoOperacionRequerido: tiempoOperacionRequerido,
+        tiempoRequeridoAccProgramadas: tiempoRequeridoAccProgramadas,
+        costoTotalMant: costoTotalMant,
+        facturacion: facturacion,
+        costoMantContratado: costoMantContratado,
         perdidaIndisponibilidad: perdidaIndisponibilidad
       };
       const response = await axios.post('/Reporte', newEntry);
@@ -74,57 +77,152 @@ function ReporteCreate() {
       }
     } catch (error) {
       console.error("Error creating new entry:", error);
-      // Optionally handle error (e.g., show an error message)
     }
 
-    // Esto es para las notificaciones #TODO arreglar
+    console.log("Aquiiiiii")
+
     try {
-        const response = await axios.get('http://localhost:5103/api/FiltroMantenimiento/GetHoras',{
-          params: {
-              equipoId: equipoId,
-            },
-        });
-        setHorasTotal(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-  
+      const response = await axios.get('/FiltroMantenimiento/GetHoras', {
+        params: {
+          equipoId: equipoId,
+        },
+      });
+      console.log(response)
+      setHorasTotal(response.data);
+      alert("horas total: " + horasTotal)
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+
+    // try {
+    //   const response = await axios.get('/FiltroMantenimiento/GetEquipos',{
+    //     params: {
+    //       TipoE: "compresor beltico",
+    //       },
+    //   });
+    //   setEquiposPorTE(response.data);
+    // } catch (error) {
+    //   console.error('Error fetching data:', error);
+    // }
+
+    // if (equiposPorTE.includes(equipoId) != null)
+    // {
+
+    console.log(horasTotal)
+    if (horasTotal % 8 == 0 || horasTotal % 8 >= 5) {
+      alert(`Equipo: ${String(equipoId)} \n Verificar nivel de aceite y verificar test de lámparas indicadores de panel`);
       try {
-        const response = await axios.get('http://localhost:5103/api/FiltroMantenimiento/GetEquipos',{
-          params: {
-            TipoE: "compresor beltico",
-            },
-        });
-        setEquiposPorTE(response.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-  
-      if (equiposPorTE.includes(equipoId) != null)
-      {
-          // Aviso con una semana de antelacion 7 dias = 168h
-          if( horasTotal % 8 <= 168) {
-          alert("Verificar nivel de aceite/n Verificar test de lámparas indicadores de panel");
-          }
-          if( horasTotal % 50 <= 168) {
-          alert("Purgar con densado del recipiente de aceite después de una parada de 4h minimo\nLimpiar filtro de aspiración");
-          }
-          if( horasTotal % 100 <= 168) {
-          alert("Cambiar filtros de aspiración y aceite");
-          }
-          if( horasTotal % 200 <= 168) {
-          alert("Cambiar aceite del cárter cuando sea necesario\nRevisar, limpiar y cambiar filtros de aspiración y aceite.\nCambiar aceite del cárter y filtro de aceite");
-          }
-          if( horasTotal % 1000 <= 168) {
-          alert("Revisión válvulas de seguridad\nCambiar filtros de aspiración y aceite\nLimpiar radiadores\nLimpiar filtro de aspiración");
-          }
-          if( horasTotal % 6000 <= 168) {
-          alert("Revisar y cambiar metales de las bielas\nChequear y/o corregir holgura de aros del pistón\nChequear y/o calibrar camisa del desplazamiento del cilindro.\nChequear y rectificar medidas de los muñones del cigüeñal\nChequeo y/o cambio del rodamiento del motor(serviciar motor)\nChequeo de los contadores eléctricos\nChequeo del funcionamiento correcto de las seguridades da cornictors\nChequeo y/o cambio de a instrumentacion\n(manómetros, termómetros, presostatos, etc\nLimpieza, revisión y barnizado del enrollado.\nCalibración de protecciones térmicas");
-          }
-          if( horasTotal % 8000 <= 168) {
-          alert("Sustituir segmentos\nDesarme y revisión total del compresor");
-          }
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo: ${String(equipoId)} \n Verificar nivel de aceite y verificar test de lámparas indicadores de panel`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
         }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+
+    }
+    if (horasTotal % 50 == 50 || horasTotal % 50 >= 40) {
+      alert(`Equipo:${equipoId} \nPurgar con densado del recipiente de aceite después de una parada de 4h minimo y limpiar filtro de aspiración`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nPurgar con densado del recipiente de aceite después de una parada de 4h minimo y limpiar filtro de aspiración`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    if (horasTotal % 100 == 100 || horasTotal % 100 >= 70) {
+      alert(`Equipo:${equipoId} \nCambiar filtros de aspiración y aceite`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nCambiar filtros de aspiración y aceite`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    if (horasTotal % 200 == 200 || horasTotal % 200 >= 160) {
+      alert(`Equipo:${equipoId} \nCambiar aceite del cárter cuando sea necesario\nRevisar, limpiar y cambiar filtros de aspiración y aceite.\nCambiar aceite del cárter y filtro de aceite`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nCambiar aceite del cárter cuando sea necesario\nRevisar, limpiar y cambiar filtros de aspiración y aceite.\nCambiar aceite del cárter y filtro de aceite`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    if (horasTotal % 1000 == 1000 || horasTotal % 1000 >= 700) {
+      alert(`Equipo:${equipoId} \nRevisión válvulas de seguridad\nCambiar filtros de aspiración y aceite\nLimpiar radiadores\nLimpiar filtro de aspiración`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nRevisión válvulas de seguridad\nCambiar filtros de aspiración y aceite\nLimpiar radiadores\nLimpiar filtro de aspiración`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    if (horasTotal % 6000 == 6000 || horasTotal % 6000 >= 5900) {
+      alert(`Equipo:${equipoId} \nRevisar y cambiar metales de las bielas\nChequear y/o corregir holgura de aros del pistón\nChequear y/o calibrar camisa del desplazamiento del cilindro.\nChequear y rectificar medidas de los muñones del cigüeñal\nChequeo y/o cambio del rodamiento del motor(serviciar motor)\nChequeo de los contadores eléctricos\nChequeo del funcionamiento correcto de las seguridades da cornictors\nChequeo y/o cambio de a instrumentacion\n(manómetros, termómetros, presostatos, etc\nLimpieza, revisión y barnizado del enrollado.\nCalibración de protecciones térmicas`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nRevisar y cambiar metales de las bielas\nChequear y/o corregir holgura de aros del pistón\nChequear y/o calibrar camisa del desplazamiento del cilindro.\nChequear y rectificar medidas de los muñones del cigüeñal\nChequeo y/o cambio del rodamiento del motor(serviciar motor)\nChequeo de los contadores eléctricos\nChequeo del funcionamiento correcto de las seguridades da cornictors\nChequeo y/o cambio de a instrumentacion\n(manómetros, termómetros, presostatos, etc\nLimpieza, revisión y barnizado del enrollado.\nCalibración de protecciones térmicas`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    if (horasTotal % 8000 == 8000 || horasTotal % 8000 >= 7900) {
+      alert(`Equipo:${equipoId} \nSustituir segmentos\nDesarme y revisión total del compresor`);
+      try {
+        const newEntry = {
+          notificationId: 0,
+          message: `Equipo:${equipoId} \nSustituir segmentos\nDesarme y revisión total del compresor`,
+          type: "mantenimiento"
+        };
+        const response = await axios.post('/Notification', newEntry);
+        if (response.status === 200) {
+          console.log("SUCCESSFULL RESPONSE")//TODO REDIRECT TO PREVIOUS PAGE
+        }
+      } catch (error) {
+        console.error("Error creating new entry:", error);
+      }
+    }
+    // }
   };
 
   return (
@@ -133,113 +231,113 @@ function ReporteCreate() {
       <form className="newReporteForm" onSubmit={handleSubmit}>
         <div className="newReporteItem">
 
-            <label>Equipo</label>
-            <select 
-             value={equipoId}
-             onChange={(e) => setEquipoId(e.target.value)}
-             >
-             {equipos.map((equipo) => (
-             <option key={equipo.equipoId} value={equipo.equipoId}>
-              {equipo.equipoId}
-             </option>
-             ))}
-            </select>
+          <label>Equipo</label>
+          <select
+            value={equipoId}
+            onChange={(e) => setEquipoId(e.target.value)}
+          >
+            {equipos.map((equipo) => (
+              <option key={equipo.equipoId} value={equipo.equipoId}>
+                {equipo.equipoId}
+              </option>
+            ))}
+          </select>
 
           <label>Fecha del  Reporte</label>
           <input
             type="datetime-local"
-            value={fechaId.toISOString().substring(0,16)}
+            value={fechaId.toISOString().substring(0, 16)}
             onChange={(e) => setFecha(new Date(e.target.value))}
             className="newReporteTextarea"
           />
 
-            <label>Parametros</label>
+          <label>Parametros</label>
 
-            <label>Tiempo real de paro por falla</label>
-           <input
-           
-           />
+          <label>Tiempo real de paro por falla</label>
+          <input
 
-<label>Tiempo real de paro por falla</label>
-           <input
+          />
+
+          <label>Tiempo real de paro por falla</label>
+          <input
             value={tiempoRealParoFalla}
             onChange={(e) => setTiempoRealParoFalla(e.target.value)}
-           />
+          />
 
-<label>Tiempo real de mantenimiento</label>
-           <input
-           value={tiempoRealMant}
-           onChange={(e) => setTiempoRealMant(e.target.value)}  
-           
-           />
+          <label>Tiempo real de mantenimiento</label>
+          <input
+            value={tiempoRealMant}
+            onChange={(e) => setTiempoRealMant(e.target.value)}
 
-<label>Tiempo Operacion Real</label>
-           <input
+          />
+
+          <label>Tiempo Operacion Real</label>
+          <input
             value={tiempoOperacionReal}
             onChange={(e) => setTiempoOperacionReal(e.target.value)}
-            
-           />
 
-<label>Tiempo de paro por trabajos planificados</label>
-           <input
-           value={tiempoParoTrabajosPlan}
-           onChange={(e) => setTiempoParoTrabajosPlan(e.target.value)}
-           
-           />
+          />
 
-<label>Tiempo real de paro por mantenimiento</label>
-           <input
-           value={tiempoParoMant}
-           onChange={(e) => setTiempoParoMant(e.target.value)}
-           
-           />
+          <label>Tiempo de paro por trabajos planificados</label>
+          <input
+            value={tiempoParoTrabajosPlan}
+            onChange={(e) => setTiempoParoTrabajosPlan(e.target.value)}
 
-<label>TiempoOperacionRequerido</label>
-           <input
-           value={tiempoOperacionRequerido}
-           onChange={(e) => setTiempoOperacionRequerido(e.target.value)}
-          
-           />
+          />
 
-<label>Tiempo Requerido Acciones Programadas</label>
-           <input
-           value={tiempoRequeridoAccProgramadas}
-           onChange={(e) => setTiempoRequeridoAccProgramadas(e.target.value)}
-           
-           />
+          <label>Tiempo real de paro por mantenimiento</label>
+          <input
+            value={tiempoParoMant}
+            onChange={(e) => setTiempoParoMant(e.target.value)}
 
-<label>Costo Total de Mantenimiento</label>
-           <input
-           value={costoTotalMant}
-           onChange={(e) => setCostoTotalMant(e.target.value)}
-          
-           />
+          />
 
-<label>Facturación</label>
-           <input
-           value={facturacion}
-           onChange={(e) => setFacturacion(e.target.value)}
-           
-           />
+          <label>TiempoOperacionRequerido</label>
+          <input
+            value={tiempoOperacionRequerido}
+            onChange={(e) => setTiempoOperacionRequerido(e.target.value)}
 
-<label>Costo Mtto Contratado</label>
-           <input 
+          />
+
+          <label>Tiempo Requerido Acciones Programadas</label>
+          <input
+            value={tiempoRequeridoAccProgramadas}
+            onChange={(e) => setTiempoRequeridoAccProgramadas(e.target.value)}
+
+          />
+
+          <label>Costo Total de Mantenimiento</label>
+          <input
+            value={costoTotalMant}
+            onChange={(e) => setCostoTotalMant(e.target.value)}
+
+          />
+
+          <label>Facturación</label>
+          <input
+            value={facturacion}
+            onChange={(e) => setFacturacion(e.target.value)}
+
+          />
+
+          <label>Costo Mtto Contratado</label>
+          <input
             value={costoMantContratado}
             onChange={(e) => setCostoMantContratado(e.target.value)}
-            
-           />
 
-<label>Perdida de la Indisponibilida</label>
-           <input
-           value={perdidaIndisponibilidad}
-           onChange={(e) => setPerdidaIndisponibilidad(e.target.value)}
-           
-           />
+          />
 
-<label>Tiempo real de paro por falla</label>
-           <input
-           
-           />
+          <label>Perdida de la Indisponibilida</label>
+          <input
+            value={perdidaIndisponibilidad}
+            onChange={(e) => setPerdidaIndisponibilidad(e.target.value)}
+
+          />
+
+          <label>Tiempo real de paro por falla</label>
+          <input
+
+          />
 
         </div>
         <button type="submit" className="newReporteButton">Create</button>

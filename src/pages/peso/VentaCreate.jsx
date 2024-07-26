@@ -12,7 +12,7 @@ function VentaCreate() {
     const [sedes, setSedes] = useState([]);
   
     useEffect(() => {
-      axios.get(`http://localhost:5103/api/Sede`)
+      axios.get(`/Sede`)
         .then(res => {
           setSedes(res.data);
         })
@@ -23,7 +23,7 @@ function VentaCreate() {
   const [entidadCompradoras, setEntidadCompradoras] = useState([]);
   
   useEffect(() => {
-    axios.get(`http://localhost:5103/api/EntidadCompradora`)
+    axios.get(`/EntidadCompradora`)
       .then(res => {
         setEntidadCompradoras(res.data);
       })

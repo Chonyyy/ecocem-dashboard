@@ -29,8 +29,8 @@ function Reporte() {
         const response = await axios.get('/Reporte'); // Update with your .NET API endpoint
         // Transform the response data to fit the DataGrid format
         const transformedData = response.data.map(item => ({
-          id: item.equipoId,
-          fechaId: item.fechaId,
+          id: item.fechaId,
+          equipoId: item.equipoId,
           tiempoRealParoFalla: item.tiempoRealParoFalla,
           tiempoRealMant: item.tiempoRealMant,
           tiempoOPeracionReal: item.tiempoOPeracionReal,
@@ -40,8 +40,7 @@ function Reporte() {
           tiempoRequeridoAccProgramadas: item.tiempoRequeridoAccProgramadas,
           costoTotalMant: item.costoTotalMant,
           facturacion: item.facturacion,
-          costoMantContratado: item.costoMantContratado,
-          perdidaIndisponibilidad: item.perdidaIndisponibilidad
+          costoMantContratado: item.costoMantContratado
         }));
         setData(transformedData);
       } catch (error) {
@@ -61,10 +60,10 @@ function Reporte() {
   };
 
   const columns = [
-    { field: "id", headerName: "Equipo", width: 200 },
+    { field: "id", headerName: "Fecha", width: 200 },
     {
-      field: "fechaId",
-      headerName: "Fecha",
+      field: "equipoId",
+      headerName: "Equipo",
       width: 200
     },
     {
@@ -117,11 +116,6 @@ function Reporte() {
                         headerName: "costoMantContratado",
                         width: 200
                       },
-                      {
-                          field: "perdidaIndisponibilidad",
-                          headerName: "perdidaIndisponibilidad",
-                          width: 200
-                        },
     {
       field: "action",
       headerName: "Action",
